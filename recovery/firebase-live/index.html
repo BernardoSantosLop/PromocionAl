@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-beasties-container>
+  <head>
+    <meta charset="utf-8">
+    <title>PromocionAlVoto</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles-5INURTSO.css"></head>
+  <body>
+    <app-root></app-root>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+  <script>
+    (() => {
+      if (!('serviceWorker' in navigator)) return;
+      try {
+        Object.defineProperty(navigator.serviceWorker, 'register', {
+          value: () => Promise.reject(new Error('Service Worker deshabilitado para evitar versiones antiguas.'))
+        });
+      } catch (_) {}
+      if (sessionStorage.getItem('pav-sw-cleared-v1')) return;
+      sessionStorage.setItem('pav-sw-cleared-v1', '1');
+      const wasControlled = Boolean(navigator.serviceWorker.controller);
+      Promise.all([
+        navigator.serviceWorker.getRegistrations().then((registrations) => Promise.all(registrations.map((registration) => registration.unregister()))),
+        'caches' in window ? caches.keys().then((keys) => Promise.all(keys.map((key) => caches.delete(key)))) : Promise.resolve()
+      ]).finally(() => {
+        if (wasControlled) window.location.reload();
+      });
+    })();
+  </script>
+  <script src="main-ENLACE-FILTRO.js" type="module"></script>
+  <script src="registro-usuarios-v30.js" defer></script>
+  </body>
+</html>

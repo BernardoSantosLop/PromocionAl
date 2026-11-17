@@ -1,0 +1,263 @@
+<section class="inicio-page" *ngIf="vm$ | async as vm">
+  <header class="inicio-header">
+    <div>
+      <span class="etiqueta">Inicio</span>
+
+      <h1>Promoción al Voto</h1>
+
+      <p>Consulta el avance general de capturas, filtros y rendimiento de tu estructura.</p>
+    </div>
+
+    <div class="acciones-header">
+      <a routerLink="/estructura" class="btn-header"> Administrar estructura </a>
+    </div>
+  </header>
+
+  <section class="resumen-grid">
+    <article class="resumen-card principal">
+      <span>Simpatizantes mostrados</span>
+      <strong>{{ vm.totalVotantesFiltrados }}</strong>
+      <p>Resultado según los filtros aplicados.</p>
+    </article>
+
+    <article class="resumen-card">
+      <span>Secciones asignadas</span>
+      <strong>{{ vm.totalSecciones }}</strong>
+      <p>Secciones únicas asignadas a rutas.</p>
+    </article>
+
+    <article class="resumen-card">
+      <span>Colonias y localidades</span>
+      <strong>{{ vm.totalColonias }}</strong>
+      <p>Colonias y localidades disponibles para registro.</p>
+    </article>
+  </section>
+
+  <section class="filtros-card">
+    <div class="filtros-header">
+      <div>
+        <h2>Filtros de inicio</h2>
+        <p>Filtra los datos por sección, colonia o localidad para visualizar información más específica.</p>
+      </div>
+
+      <button type="button" class="btn-limpiar" (click)="limpiarFiltros()">Limpiar filtros</button>
+    </div>
+
+    <div class="filtros-grid">
+      <div class="filtro-grupo">
+        <label>Sección</label>
+
+        <select name="seccion" [(ngModel)]="filtros.seccion" (ngModelChange)="actualizarFiltros()">
+          <option value="">Todas las secciones</option>
+
+          <option *ngFor="let seccion of seccionesDisponibles$ | async" [value]="seccion">
+            Sección {{ seccion }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Colonia o localidad</label>
+
+        <select name="colonia" [(ngModel)]="filtros.colonia" (ngModelChange)="actualizarFiltros()">
+          <option value="">Todas las colonias y localidades</option>
+
+          <option *ngFor="let colonia of coloniasDisponibles$ | async" [value]="colonia">
+            {{ colonia }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Capturas</label>
+
+        <select
+          name="agrupacionCapturas"
+          [(ngModel)]="filtros.agrupacionCapturas"
+          (ngModelChange)="actualizarFiltros()"
+        >
+          <option value="dia">Por día</option>
+          <option value="semana">Por semana</option>
+          <option value="mes">Por mes</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="rendimiento-card">
+    <div class="rendimiento-header">
+      <div>
+        <h2>Rendimiento de delegados</h2>
+        <p>
+          Consulta las capturas realizadas por cada delegado y sus movilizadores durante el día,
+          semana y mes actual.
+        </p>
+      </div>
+    </div>
+
+    <div class="sin-datos" *ngIf="vm.rendimientoSeccionales.length === 0">
+      No hay delegados o capturas para mostrar.
+    </div>
+
+    <div class="tabla-scroll" *ngIf="vm.rendimientoSeccionales.length > 0">
+      <table class="tabla-rendimiento">
+        <thead>
+          <tr>
+            <th>Delegado</th>
+            <th>Hoy</th>
+            <th>Semana</th>
+            <th>Mes</th>
+            <th>Total</th>
+            <th>Movilizadores</th>
+            <th>Prom. mes</th>
+            <th>Mejor movilizador del mes</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of vm.rendimientoSeccionales">
+            <td>
+              <strong>{{ item.nombre }}</strong>
+            </td>
+
+            <td>
+              <span class="contador dia">{{ item.totalDia }}</span>
+            </td>
+
+            <td>
+              <span class="contador semana">{{ item.totalSemana }}</span>
+            </td>
+
+            <td>
+              <span class="contador mes">{{ item.totalMes }}</span>
+            </td>
+
+            <td>
+              <span class="contador total">{{ item.totalGeneral }}</span>
+            </td>
+
+            <td>{{ item.totalMovilizadores }}</td>
+
+            <td>{{ item.promedioMesPorMovilizador }}</td>
+
+            <td>{{ item.mejorMovilizadorMes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="analisis-grid">
+    <article class="analisis-card">
+      <div class="card-header">
+        <div>
+          <h2>Simpatizantes por sección</h2>
+          <p>Top 10 secciones con más registros.</p>
+        </div>
+      </div>
+
+      <div class="sin-datos" *ngIf="vm.votantesPorSeccion.length === 0">
+        No hay datos por sección para mostrar.
+      </div>
+
+      <div class="lista-barras" *ngIf="vm.votantesPorSeccion.length > 0">
+        <div class="barra-item" *ngFor="let item of vm.votantesPorSeccion">
+          <div class="barra-info">
+            <strong>Sección {{ item.nombre }}</strong>
+            <span>{{ item.total }} simpatizante(s)</span>
+          </div>
+
+          <div class="barra-fondo">
+            <div class="barra-progreso seccion" [style.width.%]="item.porcentaje"></div>
+          </div>
+
+          <small>{{ item.porcentaje }}%</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="analisis-card">
+      <div class="card-header">
+        <div>
+          <h2>Simpatizantes por colonia o localidad</h2>
+          <p>Los 10 asentamientos con más registros.</p>
+        </div>
+      </div>
+
+      <div class="sin-datos" *ngIf="vm.votantesPorColonia.length === 0">
+        No hay datos por colonia o localidad para mostrar.
+      </div>
+
+      <div class="lista-barras" *ngIf="vm.votantesPorColonia.length > 0">
+        <div class="barra-item" *ngFor="let item of vm.votantesPorColonia">
+          <div class="barra-info">
+            <strong>{{ item.nombre }}</strong>
+            <span>{{ item.total }} simpatizante(s)</span>
+          </div>
+
+          <div class="barra-fondo">
+            <div class="barra-progreso colonia" [style.width.%]="item.porcentaje"></div>
+          </div>
+
+          <small>{{ item.porcentaje }}%</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="analisis-card">
+      <div class="card-header">
+        <div>
+          <h2>Edad por rangos</h2>
+          <p>Distribución de simpatizantes por edad.</p>
+        </div>
+      </div>
+
+      <div class="sin-datos" *ngIf="vm.edadPorRangos.length === 0">
+        No hay datos de edad para mostrar.
+      </div>
+
+      <div class="lista-barras" *ngIf="vm.edadPorRangos.length > 0">
+        <div class="barra-item" *ngFor="let item of vm.edadPorRangos">
+          <div class="barra-info">
+            <strong>{{ item.nombre }}</strong>
+            <span>{{ item.total }} simpatizante(s)</span>
+          </div>
+
+          <div class="barra-fondo">
+            <div class="barra-progreso edad" [style.width.%]="item.porcentaje"></div>
+          </div>
+
+          <small>{{ item.porcentaje }}%</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="analisis-card">
+      <div class="card-header">
+        <div>
+          <h2>{{ vm.tituloCapturas }}</h2>
+          <p>Capturas agrupadas por periodo.</p>
+        </div>
+      </div>
+
+      <div class="sin-datos" *ngIf="vm.capturasPorPeriodo.length === 0">
+        No hay capturas con fecha de registro.
+      </div>
+
+      <div class="lista-barras" *ngIf="vm.capturasPorPeriodo.length > 0">
+        <div class="barra-item" *ngFor="let item of vm.capturasPorPeriodo">
+          <div class="barra-info">
+            <strong>{{ item.nombre }}</strong>
+            <span>{{ item.total }} captura(s)</span>
+          </div>
+
+          <div class="barra-fondo">
+            <div class="barra-progreso captura" [style.width.%]="item.porcentaje"></div>
+          </div>
+
+          <small>{{ item.total }}</small>
+        </div>
+      </div>
+    </article>
+  </section>
+</section>

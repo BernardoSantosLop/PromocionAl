@@ -1,0 +1,270 @@
+<section class="control-electoral-page" aria-labelledby="control-electoral-titulo">
+  <header class="control-header">
+    <div class="icono-sistema" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 11H3v10h18V11h-2M7 14h10M9 3h6v8H9z" />
+        <path d="m10.5 6.5 1 1 2-2" />
+      </svg>
+    </div>
+    <div>
+      <span class="etiqueta">Coordinación</span>
+      <h1 id="control-electoral-titulo">Control Electoral</h1>
+      <p>Registra las secciones, sus casillas y la ruta que les corresponde.</p>
+    </div>
+    <span class="acceso">Acceso de coordinador</span>
+  </header>
+
+  <app-control-electoral-nav />
+  <div class="indicadores" aria-label="Resumen del registro">
+    <article>
+      <span>Secciones asignadas</span><strong>{{ totalSeccionesUnicas() }}</strong>
+    </article>
+    <article>
+      <span>Casillas registradas</span><strong>{{ totalCasillas() }}</strong>
+    </article>
+    <article>
+      <span>Rutas registradas</span><strong>{{ rutas().length }}</strong>
+    </article>
+  </div>
+  <div class="mensaje exito" role="status" *ngIf="mensajeExito()">{{ mensajeExito() }}</div>
+  <div class="mensaje error" role="alert" *ngIf="mensajeError()">{{ mensajeError() }}</div>
+
+  <div class="registro-layout">
+    <section
+      class="panel formulario-panel"
+      id="registro-seccion-electoral"
+      aria-labelledby="registro-titulo"
+    >
+      <div class="panel-header">
+        <div>
+          <span class="sobre-titulo">Registro</span>
+          <h2 id="registro-titulo">
+            {{ editandoId() ? 'Editar sección' : 'Nueva sección asignada' }}
+          </h2>
+          <p>Puedes registrar la misma sección en esta ruta o en otras con casillas diferentes. En la misma ruta, las nuevas casillas se suman a las registradas.</p>
+        </div>
+        <span class="contador">{{ formulario.casillas.length }} casilla(s)</span>
+      </div>
+      <form (ngSubmit)="guardar()">
+        <fieldset [disabled]="guardando() || !!eliminandoId()">
+          <label class="campo ruta-campo" for="numero-ruta"
+            >Número de ruta
+            <input
+              id="numero-ruta"
+              name="numeroRuta"
+              type="number"
+              inputmode="numeric"
+              [(ngModel)]="formulario.numeroRuta"
+              min="1"
+              step="1"
+              placeholder="Ej. 1"
+              required
+            />
+          </label>
+          <label class="campo seccion-campo" for="numero-seccion"
+            >Sección electoral
+            <input
+              id="numero-seccion"
+              name="seccion"
+              type="number"
+              inputmode="numeric"
+              [(ngModel)]="formulario.seccion"
+              [readonly]="!!editandoId()"
+              min="1"
+              step="1"
+              placeholder="Número de sección"
+              required
+            />
+          </label>
+          <div class="casillas-header">
+            <h3>Casillas de la sección</h3>
+            <span>Comparten la misma ruta</span>
+          </div>
+          <div class="casillas-form">
+            @for (casilla of formulario.casillas; track casilla.clave; let indice = $index) {
+              <article class="casilla-form">
+                <div class="casilla-form-header">
+                  <strong>Casilla {{ indice + 1 }}</strong
+                  ><button
+                    class="btn-quitar"
+                    type="button"
+                    (click)="quitarCasilla(casilla.clave)"
+                    [disabled]="formulario.casillas.length === 1"
+                    [attr.aria-label]="'Quitar casilla ' + (indice + 1)"
+                  >
+                    Quitar
+                  </button>
+                </div>
+                <div
+                  class="casilla-campos"
+                  [class.con-extraordinaria]="casilla.tipo === 'extraordinaria-contigua'"
+                >
+                  <label class="campo campo-tipo" [for]="'tipo-' + casilla.clave"
+                    >Tipo de casilla
+                    <select
+                      [id]="'tipo-' + casilla.clave"
+                      [name]="'tipo-' + casilla.clave"
+                      [(ngModel)]="casilla.tipo"
+                      required
+                    >
+                      <option *ngFor="let tipo of tiposCasilla" [value]="tipo.valor">
+                        {{ tipo.nombre }}
+                      </option>
+                    </select>
+                  </label>
+                  <label class="campo" [for]="'numero-' + casilla.clave"
+                    >{{
+                      casilla.tipo === 'extraordinaria-contigua'
+                        ? 'N.º extraordinaria'
+                        : 'N.º de casilla'
+                    }}
+                    <input
+                      [id]="'numero-' + casilla.clave"
+                      [name]="'numero-' + casilla.clave"
+                      type="number"
+                      inputmode="numeric"
+                      [(ngModel)]="casilla.numero"
+                      min="1"
+                      step="1"
+                      required
+                    />
+                  </label>
+                  <label
+                    class="campo"
+                    *ngIf="casilla.tipo === 'extraordinaria-contigua'"
+                    [for]="'contigua-' + casilla.clave"
+                    >N.º contigua
+                    <input
+                      [id]="'contigua-' + casilla.clave"
+                      [name]="'contigua-' + casilla.clave"
+                      type="number"
+                      inputmode="numeric"
+                      [(ngModel)]="casilla.numeroContigua"
+                      min="1"
+                      step="1"
+                      required
+                    />
+                  </label>
+                </div>
+              </article>
+            }
+          </div>
+          <button class="btn-agregar" type="button" (click)="agregarCasilla()">
+            <span aria-hidden="true">＋</span> Agregar otra casilla
+          </button>
+          <p class="ayuda">
+            Todas estas casillas pertenecen a la ruta indicada. Al guardar, la ruta se mantiene para
+            registrar la siguiente sección.
+          </p>
+          <div class="acciones-form">
+            <button class="btn secundario" type="button" (click)="limpiar()">
+              {{ editandoId() ? 'Cancelar' : 'Limpiar' }}</button
+            ><button class="btn primario" type="submit">
+              {{
+                guardando() ? 'Guardando…' : editandoId() ? 'Guardar cambios' : 'Registrar sección'
+              }}
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <section class="panel lista-panel" aria-labelledby="lista-titulo">
+      <div class="panel-header">
+        <div>
+          <span class="sobre-titulo">Asignaciones</span>
+          <h2 id="lista-titulo">Rutas y secciones</h2>
+          <p>Cada ruta agrupa sus secciones y todas las casillas de cada una.</p>
+        </div>
+      </div>
+      <div class="filtros-registro">
+        <label class="campo" for="buscar-seccion"
+          ><span class="sr-only">Buscar sección o casilla</span
+          ><input
+            id="buscar-seccion"
+            type="search"
+            placeholder="Buscar sección o casilla…"
+            [ngModel]="busqueda()"
+            (ngModelChange)="busqueda.set($event)"
+        /></label>
+        <label class="campo" for="filtrar-ruta"
+          ><span class="sr-only">Filtrar por ruta</span
+          ><select
+            id="filtrar-ruta"
+            [ngModel]="filtroRuta()"
+            (ngModelChange)="filtroRuta.set($event)"
+          >
+            <option value="">Todas las rutas</option>
+            <option *ngFor="let ruta of rutas()" [value]="'' + ruta">Ruta {{ ruta }}</option>
+          </select></label
+        >
+      </div>
+      <div class="estado-carga" *ngIf="cargando()" role="status">Cargando secciones…</div>
+      <div class="mensaje error" *ngIf="errorCarga()" role="alert">
+        <span>{{ errorCarga() }}</span
+        ><button type="button" class="btn secundario" (click)="cargar()">Reintentar</button>
+      </div>
+      <div class="registros" *ngIf="!cargando() && !errorCarga()">
+        <section class="ruta-grupo" *ngFor="let grupo of gruposPorRuta()">
+          <header class="ruta-grupo-header">
+            <h3>Ruta {{ grupo.numeroRuta }}</h3>
+            <span
+              >{{ grupo.secciones.length }}
+              {{ grupo.secciones.length === 1 ? 'sección' : 'secciones' }} ·
+              {{ grupo.totalCasillas }}
+              {{ grupo.totalCasillas === 1 ? 'casilla' : 'casillas' }}</span
+            >
+          </header>
+          <article class="registro-card" *ngFor="let registro of grupo.secciones">
+            <header class="registro-card-header">
+              <div>
+                <span class="seccion-icono" aria-hidden="true">#</span>
+                <h3>Sección {{ registro.seccion }}</h3>
+                <span class="contador">{{ registro.casillas.length }} casilla(s)</span>
+              </div>
+              <div class="acciones-registro">
+                <button
+                  class="btn-editar"
+                  type="button"
+                  (click)="editar(registro)"
+                  [disabled]="guardando() || !!eliminandoId()"
+                >
+                  Editar</button
+                ><button
+                  class="btn-eliminar"
+                  type="button"
+                  (click)="eliminar(registro)"
+                  [disabled]="guardando() || !!eliminandoId()"
+                >
+                  {{ eliminandoId() === registro.id ? 'Eliminando…' : 'Eliminar' }}
+                </button>
+              </div>
+            </header>
+            <div class="casillas-resumen">
+              <div class="casilla-resumen" *ngFor="let casilla of registro.casillas">
+                <strong>{{ nombreCasilla(casilla) }}</strong>
+              </div>
+            </div>
+          </article>
+        </section>
+        <div class="sin-registros" *ngIf="!seccionesFiltradas().length">
+          <h3>{{ secciones().length ? 'Sin coincidencias' : 'Registra tu primera sección' }}</h3>
+          <p>
+            {{
+              secciones().length
+                ? 'Prueba otro número de sección, casilla o ruta.'
+                : 'Elige una ruta y agrega sus secciones con todas sus casillas.'
+            }}
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

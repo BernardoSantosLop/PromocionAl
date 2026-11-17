@@ -1,0 +1,517 @@
+* {
+  box-sizing: border-box;
+}
+
+.inicio-page {
+  min-height: calc(100vh - 72px);
+  padding: 32px;
+  background: #f3f4f6;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+.inicio-header {
+  background: linear-gradient(135deg, #1f2937, #374151);
+  color: white;
+  padding: 32px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 12px 30px rgba(31, 41, 55, 0.22);
+  overflow: hidden;
+}
+
+.etiqueta {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.inicio-header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.inicio-header p {
+  margin: 8px 0 0;
+  color: #d1d5db;
+}
+
+.acciones-header {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-header {
+  background: white;
+  color: #1f2937;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btn-header:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.btn-header.secundario {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.btn-header.secundario:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Resumen */
+
+.resumen-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.resumen-card,
+.filtros-card,
+.analisis-card,
+.rendimiento-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.resumen-card {
+  padding: 28px;
+}
+
+.resumen-card.principal {
+  background: #1f2937;
+  color: white;
+}
+
+.resumen-card span {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.resumen-card.principal span {
+  color: #d1d5db;
+}
+
+.resumen-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.resumen-card p {
+  margin: 12px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.resumen-card.principal p {
+  color: #d1d5db;
+}
+
+/* Filtros */
+
+.filtros-card {
+  margin-top: 24px;
+  padding: 24px;
+}
+
+.filtros-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.filtros-header h2,
+.card-header h2,
+.rendimiento-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.filtros-header p,
+.card-header p,
+.rendimiento-header p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.btn-limpiar {
+  border: none;
+  background: #e5e7eb;
+  color: #1f2937;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-limpiar:hover {
+  background: #d1d5db;
+  transform: translateY(-1px);
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.filtro-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filtro-grupo label {
+  font-weight: bold;
+  color: #374151;
+  font-size: 14px;
+}
+
+.filtro-grupo select,
+.filtro-grupo input {
+  height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-size: 15px;
+  outline: none;
+  background: white;
+}
+
+.filtro-grupo select:focus,
+.filtro-grupo input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+/* Tabla rendimiento */
+
+.rendimiento-card {
+  margin-top: 24px;
+  padding: 24px;
+}
+
+.rendimiento-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.tabla-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tabla-rendimiento {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.tabla-rendimiento thead {
+  background: #1f2937;
+  color: white;
+}
+
+.tabla-rendimiento th {
+  text-align: left;
+  padding: 13px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.tabla-rendimiento th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.tabla-rendimiento th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.tabla-rendimiento td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.tabla-rendimiento tbody tr:hover {
+  background: #f9fafb;
+}
+
+.tabla-rendimiento td strong {
+  color: #111827;
+}
+
+.contador {
+  display: inline-flex;
+  min-width: 34px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.contador.dia {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.contador.semana {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.contador.mes {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.contador.total {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+/* Análisis */
+
+.analisis-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.analisis-card {
+  padding: 24px;
+}
+
+.lista-barras {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.barra-item {
+  display: grid;
+  grid-template-columns: 160px 1fr 52px;
+  align-items: center;
+  gap: 14px;
+}
+
+.barra-info strong {
+  display: block;
+  color: #111827;
+  font-size: 14px;
+}
+
+.barra-info span {
+  display: block;
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.barra-fondo {
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra-progreso {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.barra-progreso.seccion {
+  background: #2563eb;
+}
+
+.barra-progreso.colonia {
+  background: #f97316;
+}
+
+.barra-progreso.edad {
+  background: #16a34a;
+}
+
+.barra-progreso.captura {
+  background: #7c3aed;
+}
+
+.barra-item small {
+  color: #6b7280;
+  font-weight: bold;
+  text-align: right;
+}
+
+.sin-datos {
+  margin-top: 20px;
+  padding: 24px;
+  border: 1px dashed #d1d5db;
+  border-radius: 14px;
+  color: #6b7280;
+  text-align: center;
+  background: #f9fafb;
+}
+
+/* Responsive */
+
+@media (max-width: 1150px) {
+  .resumen-grid,
+  .filtros-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analisis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .inicio-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .acciones-header {
+    width: 100%;
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .btn-header {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  .resumen-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .inicio-page {
+    padding: 16px;
+  }
+
+  .inicio-header {
+    padding: 24px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .inicio-header > div {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .inicio-header h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .inicio-header p {
+    text-align: center;
+  }
+
+  .etiqueta {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .acciones-header {
+    width: 100%;
+    max-width: 100%;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .btn-header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    display: block;
+  }
+
+  .resumen-card strong {
+    font-size: 34px;
+  }
+
+  .filtros-header {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .btn-limpiar {
+    width: 100%;
+  }
+
+  .filtros-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rendimiento-card {
+    padding: 18px;
+  }
+
+  .rendimiento-header {
+    text-align: center;
+    align-items: center;
+  }
+
+  .rendimiento-header h2,
+  .rendimiento-header p {
+    text-align: center;
+  }
+
+  .tabla-scroll {
+    margin-top: 6px;
+  }
+
+  .barra-item {
+    grid-template-columns: 1fr;
+  }
+
+  .barra-item small {
+    text-align: left;
+  }
+}

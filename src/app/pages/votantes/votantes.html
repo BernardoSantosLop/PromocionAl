@@ -1,0 +1,543 @@
+<section class="votantes-page">
+  <header class="votantes-header">
+    <div>
+      <span class="etiqueta">Consulta</span>
+      <h1>Simpatizantes registrados</h1>
+      <p>Consulta, filtra, exporta y revisa el estado de sincronización de los simpatizantes.</p>
+    </div>
+  </header>
+
+  <div class="mensaje exito" *ngIf="mensajeExito" role="status" aria-live="polite">
+    {{ mensajeExito }}
+  </div>
+
+  <div class="mensaje error" *ngIf="mensajeError" role="alert">
+    {{ mensajeError }}
+  </div>
+
+  <section id="formulario-edicion-votante" class="edicion-card" *ngIf="editandoVotante">
+    <div class="edicion-header">
+      <div>
+        <span class="etiqueta-edicion">Edición</span>
+        <h2>Editar datos del simpatizante</h2>
+        <p>
+          Modifica la información necesaria y guarda los cambios. La clave de elector se muestra
+          solo como referencia.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="btn-cerrar-edicion"
+        (click)="cancelarEdicionVotante()"
+        [disabled]="guardandoEdicion"
+      >
+        ✕
+      </button>
+    </div>
+
+    <form class="edicion-form" (ngSubmit)="guardarEdicionVotante()">
+      <div class="edicion-grid">
+        <div class="form-grupo full">
+          <label>
+            Nombre completo
+            <span class="requerido">*</span>
+          </label>
+
+          <input
+            type="text"
+            name="editNombreCompleto"
+            [(ngModel)]="formEdicion.nombreCompleto"
+            placeholder="Nombre completo"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label>
+            Teléfono
+            <span class="requerido">*</span>
+          </label>
+
+          <input
+            type="tel"
+            name="editTelefono"
+            [(ngModel)]="formEdicion.telefono"
+            placeholder="Ej. 2871234567"
+            inputmode="numeric"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label>
+            Edad
+            <span class="requerido">*</span>
+          </label>
+
+          <input
+            type="number"
+            name="editEdad"
+            [(ngModel)]="formEdicion.edad"
+            placeholder="Edad"
+            min="18"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label>
+            Sección
+            <span class="requerido">*</span>
+          </label>
+
+          <input
+            type="number"
+            name="editSeccion"
+            [(ngModel)]="formEdicion.seccion"
+            placeholder="Sección"
+            min="1"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label>
+            Municipio
+            <span class="requerido">*</span>
+          </label>
+
+          <input
+            type="text"
+            name="editMunicipio"
+            [(ngModel)]="formEdicion.municipio"
+            placeholder="Municipio"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label>
+            Colonia o localidad
+            <span class="requerido">*</span>
+          </label>
+
+          <input
+            type="text"
+            name="editColonia"
+            [(ngModel)]="formEdicion.colonia"
+            placeholder="Colonia o localidad"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label>Clave de elector</label>
+
+          <input
+            type="text"
+            name="editClaveElector"
+            [(ngModel)]="formEdicion.claveElector"
+            readonly
+            class="input-readonly"
+          />
+
+          <small class="ayuda-edicion">
+            Para cambiar la clave de elector se recomienda eliminar y volver a registrar, porque la
+            clave se usa como ID del documento.
+          </small>
+        </div>
+
+        <div class="form-grupo full">
+          <label>
+            Dirección
+            <span class="requerido">*</span>
+          </label>
+
+          <textarea
+            name="editDireccion"
+            [(ngModel)]="formEdicion.direccion"
+            placeholder="Dirección completa"
+          ></textarea>
+        </div>
+
+        <div class="facebook-edicion-card">
+          <h3>Facebook</h3>
+
+          <div class="radio-group">
+            <label class="radio-card" [class.activo]="formEdicion.tieneFacebook === true">
+              <input
+                type="radio"
+                name="editTieneFacebook"
+                [(ngModel)]="formEdicion.tieneFacebook"
+                [value]="true"
+              />
+
+              <span>Sí tiene Facebook</span>
+            </label>
+
+            <label class="radio-card" [class.activo]="formEdicion.tieneFacebook === false">
+              <input
+                type="radio"
+                name="editTieneFacebook"
+                [(ngModel)]="formEdicion.tieneFacebook"
+                [value]="false"
+                (change)="formEdicion.usuarioFacebook = ''"
+              />
+
+              <span>No tiene Facebook</span>
+            </label>
+          </div>
+
+          <div class="form-grupo facebook-usuario" *ngIf="formEdicion.tieneFacebook">
+            <label>
+              Usuario de Facebook
+              <span class="requerido">*</span>
+            </label>
+
+            <input
+              type="text"
+              name="editUsuarioFacebook"
+              [(ngModel)]="formEdicion.usuarioFacebook"
+              placeholder="Ej. juan.perez"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="estado-edicion-card">
+          <h3>Estado del simpatizante</h3>
+
+          <label class="check-activo">
+            <input type="checkbox" name="editActivo" [(ngModel)]="formEdicion.activo" />
+
+            <span>
+              {{ formEdicion.activo ? 'Votante activo' : 'Votante inactivo' }}
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="acciones-edicion">
+        <button
+          type="button"
+          class="btn-cancelar-edicion"
+          (click)="cancelarEdicionVotante()"
+          [disabled]="guardandoEdicion"
+        >
+          Cancelar
+        </button>
+
+        <button type="submit" class="btn-guardar-edicion" [disabled]="guardandoEdicion">
+          {{ guardandoEdicion ? 'Guardando...' : 'Guardar cambios' }}
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="filtros-card">
+    <div class="filtros-header">
+      <div>
+        <h2>Filtros de búsqueda</h2>
+        <p>Si aplicas filtros, las exportaciones se generarán solo con los resultados filtrados.</p>
+      </div>
+
+      <div class="acciones-filtros">
+        <button type="button" class="btn-limpiar" (click)="limpiarFiltros()">
+          Limpiar filtros
+        </button>
+
+        <button type="button" class="btn-exportar" (click)="exportar('excel')">
+          Exportar Excel
+        </button>
+
+        <button type="button" class="btn-exportar" (click)="exportar('pdf')">Exportar PDF</button>
+
+        <button
+          type="button"
+          class="btn-exportar btn-telefonos"
+          (click)="exportarTelefonos('excel')"
+        >
+          Teléfonos Excel
+        </button>
+
+        <button type="button" class="btn-exportar btn-telefonos" (click)="exportarTelefonos('pdf')">
+          Teléfonos PDF
+        </button>
+      </div>
+    </div>
+
+    <div class="filtros-grid">
+      <div class="filtro-grupo">
+        <label>Búsqueda general</label>
+        <input
+          type="text"
+          name="texto"
+          [(ngModel)]="filtros.texto"
+          (ngModelChange)="actualizarFiltros()"
+          placeholder="Nombre, teléfono, clave, colonia..."
+        />
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Coordinador</label>
+        <select
+          name="coordinadorUid"
+          [(ngModel)]="filtros.coordinadorUid"
+          (ngModelChange)="alCambiarCoordinador()"
+        >
+          <option value="">Selecciona un coordinador</option>
+
+          <option
+            *ngFor="let coordinador of coordinadoresDisponibles$ | async"
+            [value]="coordinador.uid"
+          >
+            {{ coordinador.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Delegado</label>
+        <select
+          name="seccionalUid"
+          [(ngModel)]="filtros.seccionalUid"
+          (ngModelChange)="alCambiarSeccional()"
+          [disabled]="!filtros.coordinadorUid"
+        >
+          <option value="">
+            {{
+              filtros.coordinadorUid
+                ? 'Todos los delegados del coordinador'
+                : 'Primero selecciona un coordinador'
+            }}
+          </option>
+
+          <option *ngFor="let enlace of seccionalesDisponibles$ | async" [value]="enlace.uid">
+            {{ enlace.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Movilizador</label>
+        <select
+          name="movilizadorUid"
+          [(ngModel)]="filtros.movilizadorUid"
+          (ngModelChange)="actualizarFiltros()"
+          [disabled]="!filtros.seccionalUid && !filtros.enlaceUid"
+        >
+          <option value="">
+            {{
+              filtros.seccionalUid || filtros.enlaceUid
+                ? 'Todos los movilizadores'
+                : 'Primero selecciona un delegado o enlace'
+            }}
+          </option>
+
+          <option
+            *ngFor="let movilizador of movilizadoresDisponibles$ | async"
+            [value]="movilizador.uid"
+          >
+            {{ movilizador.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Sección</label>
+        <select name="seccion" [(ngModel)]="filtros.seccion" (ngModelChange)="actualizarFiltros()">
+          <option value="">Todas las secciones</option>
+
+          <option *ngFor="let seccion of seccionesDisponibles$ | async" [value]="seccion">
+            Sección {{ seccion }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Colonia o localidad</label>
+        <select name="colonia" [(ngModel)]="filtros.colonia" (ngModelChange)="actualizarFiltros()">
+          <option value="">Todas las colonias y localidades</option>
+
+          <option *ngFor="let colonia of coloniasDisponibles$ | async" [value]="colonia">
+            {{ colonia }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Facebook</label>
+        <select
+          name="facebook"
+          [(ngModel)]="filtros.facebook"
+          (ngModelChange)="actualizarFiltros()"
+        >
+          <option value="todos">Todos</option>
+          <option value="con">Con Facebook</option>
+          <option value="sin">Sin Facebook</option>
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Enlace</label>
+        <select
+          name="filtroEnlace"
+          [(ngModel)]="filtros.enlaceUid"
+          (ngModelChange)="alCambiarEnlace()"
+        >
+          <option value="">Todos los enlaces</option>
+          <option *ngFor="let enlace of enlacesDisponibles$ | async" [value]="enlace.uid">
+            {{ enlace.nombre }}
+          </option>
+        </select>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="resumen-card" *ngIf="votantesFiltrados$ | async as votantes">
+    <div>
+      <span>Resultados</span>
+      <strong>{{ votantes.length }}</strong>
+    </div>
+
+    <p *ngIf="hayFiltrosActivos()">Mostrando resultados filtrados.</p>
+
+    <p *ngIf="!hayFiltrosActivos()">Mostrando todos los simpatizantes registrados.</p>
+  </section>
+
+  <section class="lista-card">
+    <div class="lista-header">
+      <div>
+        <h2>Listado de simpatizantes</h2>
+        <p>El listado está oculto al entrar. Presiona el botón para mostrarlo.</p>
+      </div>
+
+      <button type="button" class="btn-desplegar-votantes" (click)="alternarListadoVotantes()">
+        <span>
+          {{ mostrarListadoVotantes ? 'Ocultar votantes' : 'Mostrar votantes' }}
+        </span>
+
+        <span class="flecha-desplegable" [class.abierta]="mostrarListadoVotantes"> ▼ </span>
+      </button>
+    </div>
+
+    <div class="listado-cerrado" *ngIf="!mostrarListadoVotantes">
+      <strong>Listado oculto</strong>
+      <p>
+        Los simpatizantes no se muestran automáticamente para que la pantalla cargue más limpia.
+        Puedes filtrar y exportar sin abrir el listado.
+      </p>
+    </div>
+
+    <ng-container *ngIf="mostrarListadoVotantes">
+      <ng-container *ngIf="votantesFiltrados$ | async as votantes">
+        <div class="sin-datos" *ngIf="votantes.length === 0">
+          No hay simpatizantes que coincidan con la búsqueda.
+        </div>
+
+        <div class="votantes-lista" *ngIf="votantes.length > 0">
+          <article class="votante-card" *ngFor="let votante of votantes">
+            <div class="votante-info">
+              <div class="votante-titulo">
+                <strong>{{ votante.nombreCompleto }}</strong>
+
+                <div class="badges">
+                  <span class="badge" [class.inactivo]="!votante.activo">
+                    {{ votante.activo ? 'Activo' : 'Inactivo' }}
+                  </span>
+
+                  <span
+                    class="badge-sync"
+                    [class.pendiente]="votante.pendienteSincronizacion"
+                    [class.sincronizado]="!votante.pendienteSincronizacion"
+                  >
+                    {{
+                      votante.pendienteSincronizacion ? 'Pendiente de sincronizar' : 'Sincronizado'
+                    }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="datos-grid">
+                <div>
+                  <span>Teléfono</span>
+                  <strong>{{ votante.telefono }}</strong>
+                </div>
+
+                <div>
+                  <span>Edad</span>
+                  <strong>{{ votante.edad }}</strong>
+                </div>
+
+                <div>
+                  <span>Sección</span>
+                  <strong>{{ votante.seccion }}</strong>
+                </div>
+
+                <div>
+                  <span>Colonia o localidad</span>
+                  <strong>{{ votante.colonia }}</strong>
+                </div>
+
+                <div>
+                  <span>Municipio</span>
+                  <strong>{{ votante.municipio }}</strong>
+                </div>
+
+                <div>
+                  <span>Facebook</span>
+                  <strong>
+                    {{ votante.tieneFacebook ? votante.usuarioFacebook : '' }}
+                  </strong>
+                </div>
+
+                <div>
+                  <span>Clave de elector</span>
+                  <strong>{{ votante.claveElector }}</strong>
+                </div>
+
+                <div>
+                  <span>Capturado por</span>
+                  <strong>
+                    {{ votante.capturadoPorNombre || 'Sin dato' }}
+                  </strong>
+                </div>
+
+                <div>
+                  <span>Rol capturista</span>
+                  <strong>{{ votante.capturadoPorRol || 'Sin dato' }}</strong>
+                </div>
+
+                <div>
+                  <span>Fecha registro</span>
+                  <strong>
+                    {{
+                      formatearFecha(votante.fechaRegistro) ||
+                        votante.fechaRegistroLocal ||
+                        'Sin fecha'
+                    }}
+                  </strong>
+                </div>
+              </div>
+
+              <div class="direccion">
+                <span>Dirección</span>
+                <p>{{ votante.direccion }}</p>
+              </div>
+            </div>
+
+            <div class="acciones-card">
+              <button type="button" class="btn-mini editar" (click)="abrirEditorVotante(votante)">
+                Editar
+              </button>
+
+              <button type="button" class="btn-mini eliminar" (click)="eliminarVotante(votante)">
+                Eliminar
+              </button>
+            </div>
+          </article>
+        </div>
+      </ng-container>
+    </ng-container>
+  </section>
+</section>

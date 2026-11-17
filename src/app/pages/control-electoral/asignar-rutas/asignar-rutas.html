@@ -1,0 +1,251 @@
+<section class="asignar-page" aria-labelledby="asignar-titulo">
+  <header class="cabecera">
+    <div>
+      <span class="sobre-titulo">Control Electoral</span>
+      <h1 id="asignar-titulo">RG y rutas</h1>
+      <p>Asigna un RG a cada ruta. Las rutas ocupadas quedan reservadas a su responsable.</p>
+    </div>
+    <button
+      class="btn secundario"
+      type="button"
+      (click)="cargar()"
+      [disabled]="cargando() || !!guardandoId()"
+    >
+      Actualizar
+    </button>
+  </header>
+  <app-control-electoral-nav />
+
+  <div class="indicadores" aria-label="Resumen de asignaciones">
+    <article>
+      <span>RG capturados</span><strong>{{ rgs().length }}</strong>
+    </article>
+    <article>
+      <span>Con ruta asignada</span><strong>{{ asignados() }}</strong>
+    </article>
+    <article>
+      <span>Sin ruta vigente</span><strong>{{ pendientes() }}</strong>
+    </article>
+    <article>
+      <span>Rutas creadas</span><strong>{{ rutas().length }}</strong>
+    </article>
+  </div>
+  <p class="mensaje exito" *ngIf="exito()" role="status">{{ exito() }}</p>
+  <p class="mensaje error" *ngIf="error()" role="alert">{{ error() }}</p>
+  <div class="mensaje error" *ngIf="errorCarga()" role="alert">
+    <span>{{ errorCarga() }}</span
+    ><button class="btn secundario" type="button" (click)="cargar()">Reintentar</button>
+  </div>
+  <p class="estado" *ngIf="cargando()" role="status">Cargando RG y rutas…</p>
+
+  <div class="asignacion-layout" *ngIf="!cargando() && !errorCarga()">
+    <section class="panel panel-rgs" aria-labelledby="rgs-titulo">
+      <header class="panel-header">
+        <div>
+          <h2 id="rgs-titulo">RG capturados</h2>
+          <p>Selecciona una ruta y guarda la asignación.</p>
+        </div>
+        <span class="contador">{{ rgsFiltrados().length }} RG</span>
+      </header>
+      <div class="filtros">
+        <label
+          ><span class="sr-only">Buscar RG por nombre, teléfono o sección</span
+          ><input
+            type="search"
+            placeholder="Buscar nombre, teléfono o sección…"
+            [ngModel]="busqueda()"
+            (ngModelChange)="busqueda.set($event)" /></label
+        ><label
+          ><span class="sr-only">Filtrar RG por ruta</span
+          ><select [ngModel]="filtroRuta()" (ngModelChange)="filtroRuta.set($event)">
+            <option value="">Todos los RG</option>
+            <option value="pendientes">Sin ruta vigente</option>
+            <option *ngFor="let ruta of rutas()" [value]="'' + ruta.numeroRuta">
+              Ruta {{ ruta.numeroRuta }}
+            </option>
+          </select></label
+        >
+      </div>
+
+      <div class="lista-rgs">
+        @for (rg of rgsFiltrados(); track rg.id) {
+          <article class="rg-card">
+            <div class="rg-datos">
+              <div>
+                <h3>{{ rg.nombreCompleto }}</h3>
+                <span
+                  class="estado-ruta"
+                  [class.sin-ruta]="
+                    rg.numeroRutaAsignada === null || !numerosRutas().has(rg.numeroRutaAsignada)
+                  "
+                  >{{
+                    rg.numeroRutaAsignada === null
+                      ? 'Sin asignar'
+                      : 'Ruta ' +
+                        rg.numeroRutaAsignada +
+                        (numerosRutas().has(rg.numeroRutaAsignada) ? '' : ' · no disponible')
+                  }}</span
+                >
+              </div>
+              <p>
+                <span>{{ rg.telefono || 'Sin teléfono' }}</span
+                ><span *ngIf="rg.seccion">Sección de registro {{ rg.seccion }}</span>
+              </p>
+            </div>
+            <div class="asignar-controles">
+              <label [for]="'ruta-rg-' + rg.id"
+                >Ruta asignada
+                <select
+                  [id]="'ruta-rg-' + rg.id"
+                  [ngModel]="seleccion(rg)"
+                  (ngModelChange)="seleccionar(rg, $event)"
+                  [disabled]="!!guardandoId() || !rutas().length"
+                >
+                  <option value="">Selecciona una ruta</option>
+                  <option
+                    *ngIf="
+                      rg.numeroRutaAsignada !== null && !numerosRutas().has(rg.numeroRutaAsignada)
+                    "
+                    [value]="'' + rg.numeroRutaAsignada"
+                    disabled
+                  >
+                    Ruta {{ rg.numeroRutaAsignada }} · no disponible
+                  </option>
+                  <option
+                    *ngFor="let ruta of rutas()"
+                    [value]="'' + ruta.numeroRuta"
+                    [disabled]="rutaOcupada(ruta.numeroRuta, rg.id)"
+                  >
+                    Ruta {{ ruta.numeroRuta }} · {{ ruta.secciones.length }} secciones ·
+                    {{ ruta.totalCasillas }} casillas{{
+                      rutaOcupada(ruta.numeroRuta, rg.id) ? ' · Ya tiene RG' : ''
+                    }}
+                  </option>
+                </select>
+              </label>
+              <button
+                class="btn primario"
+                type="button"
+                (click)="asignar(rg)"
+                [disabled]="!!guardandoId() || !tieneCambio(rg)"
+              >
+                {{
+                  guardandoId() === rg.id
+                    ? 'Guardando…'
+                    : rg.numeroRutaAsignada === null
+                      ? 'Asignar ruta'
+                      : 'Guardar cambio'
+                }}
+              </button>
+              <button
+                class="btn-quitar"
+                *ngIf="rg.numeroRutaAsignada !== null"
+                type="button"
+                (click)="quitar(rg)"
+                [disabled]="!!guardandoId()"
+              >
+                Quitar ruta
+              </button>
+            </div>
+          </article>
+        }
+        <div class="vacio" *ngIf="!rgs().length">
+          <h3>Primero registra un RG</h3>
+          <p>Los RG capturados aparecerán aquí para vincularlos con sus rutas.</p>
+          <a routerLink="/control-electoral/registrar-rg"
+            >Registrar RG <span aria-hidden="true">→</span></a
+          >
+        </div>
+        <div class="vacio" *ngIf="rgs().length && !rgsFiltrados().length">
+          <h3>No hay coincidencias</h3>
+          <p>Cambia el nombre o el filtro para consultar otros RG.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel panel-rutas" aria-labelledby="rutas-titulo">
+      <header class="panel-header">
+        <div>
+          <h2 id="rutas-titulo">Rutas creadas</h2>
+          <p>Revisa las secciones y casillas de cada ruta.</p>
+        </div>
+        <span class="contador">{{ rutas().length }}</span>
+      </header>
+      <div class="lista-rutas">
+        @for (ruta of rutas(); track ruta.numeroRuta) {
+          <div class="bloque-ruta">
+            <details class="ruta-card">
+              <summary>
+                <span class="ruta-icono" aria-hidden="true">{{ ruta.numeroRuta }}</span
+                ><span class="ruta-identidad"
+                  ><strong>Ruta {{ ruta.numeroRuta }}</strong
+                  ><small
+                    >{{ ruta.secciones.length }}
+                    {{ ruta.secciones.length === 1 ? 'sección' : 'secciones' }} ·
+                    {{ ruta.totalCasillas }}
+                    {{ ruta.totalCasillas === 1 ? 'casilla' : 'casillas' }}</small
+                  ></span
+                ><span class="vinculados" [class.pendiente]="!rgsDeRuta(ruta.numeroRuta).length">{{
+                  rgsDeRuta(ruta.numeroRuta).length
+                    ? rgsDeRuta(ruta.numeroRuta).length + ' RG'
+                    : 'Sin RG'
+                }}</span
+                ><span class="flecha" aria-hidden="true">›</span>
+              </summary>
+              <div class="ruta-contenido">
+                <p class="mensaje error" *ngIf="rgsDeRuta(ruta.numeroRuta).length > 1" role="alert">
+                  Esta ruta tiene varios RG de asignaciones anteriores. Quita las asignaciones
+                  adicionales para dejar un solo responsable.
+                </p>
+                <div class="responsables">
+                  <span>RG asignados</span
+                  ><strong *ngFor="let responsable of rgsDeRuta(ruta.numeroRuta)">{{
+                    responsable.nombreCompleto
+                  }}</strong
+                  ><small *ngIf="!rgsDeRuta(ruta.numeroRuta).length"
+                    >Esta ruta todavía no tiene un RG asignado.</small
+                  >
+                </div>
+                <div class="seccion-ruta" *ngFor="let seccion of ruta.secciones">
+                  <strong>Sección {{ seccion.seccion }}</strong>
+                  <div>
+                    <span class="casilla" *ngFor="let casilla of seccion.casillas">{{
+                      nombreCasilla(casilla)
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <div class="acciones-ruta">
+              <span *ngIf="rgsDeRuta(ruta.numeroRuta).length !== 1"
+                >Asigna un RG para imprimir su hoja.</span
+              ><button
+                class="btn btn-imprimir"
+                type="button"
+                (click)="imprimirRuta(ruta.numeroRuta)"
+                [disabled]="!!guardandoId() || rgsDeRuta(ruta.numeroRuta).length !== 1"
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7zM16 11h1" /></svg
+                >Imprimir ruta
+              </button>
+            </div>
+          </div>
+        }
+        <div class="vacio" *ngIf="!rutas().length">
+          <h3>Aún no hay rutas</h3>
+          <p>Registra secciones y casillas bajo un número de ruta para poder asignarlo.</p>
+          <a routerLink="/control-electoral">Crear una ruta <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

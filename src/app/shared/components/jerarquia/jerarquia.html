@@ -1,0 +1,234 @@
+<section class="jerarquia-completa">
+  <header class="cabecera">
+    <div class="titulo">
+      <span class="etiqueta-seccion">Estructura del equipo</span>
+      <h2>Jerarquía completa</h2>
+      <p>
+        {{
+          datos()?.rolSolicitante === 'enlace'
+            ? 'Abre tu enlace y selecciona un movilizador para consultar sus simpatizantes.'
+            : 'Selecciona un delegado para explorar sus enlaces, movilizadores y simpatizantes.'
+        }}
+      </p>
+    </div>
+    <button class="btn-actualizar" type="button" (click)="cargar()" [disabled]="cargando()">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M20 7v5h-5M4 17v-5h5" />
+        <path d="M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1" />
+      </svg>
+      {{ cargando() ? 'Actualizando…' : 'Actualizar' }}
+    </button>
+  </header>
+
+  <div class="barra-herramientas">
+    <label class="buscador">
+      <span class="sr-only">Buscar delegado, enlace o movilizador</span>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+      >
+        <circle cx="10.5" cy="10.5" r="6.5" />
+        <path d="m16 16 4 4" />
+      </svg>
+      <input
+        type="search"
+        placeholder="Buscar por nombre…"
+        [ngModel]="busqueda()"
+        (ngModelChange)="cambiarBusqueda($event)"
+      />
+    </label>
+    <div class="resumen" *ngIf="datos()">
+      <span *ngIf="datos()?.rolSolicitante === 'coordinador'"
+        ><strong>{{ resumen().delegados }}</strong>
+        {{ resumen().delegados === 1 ? 'delegado' : 'delegados' }}</span
+      >
+      <span
+        ><strong>{{ resumen().enlaces }}</strong>
+        {{ resumen().enlaces === 1 ? 'enlace' : 'enlaces' }}</span
+      >
+      <span
+        ><strong>{{ resumen().movilizadores }}</strong>
+        {{ resumen().movilizadores === 1 ? 'movilizador' : 'movilizadores' }}</span
+      >
+    </div>
+    <button
+      class="btn-texto"
+      type="button"
+      (click)="contraerTodo()"
+      [disabled]="!abiertos().size && !busqueda()"
+    >
+      Contraer todo
+    </button>
+  </div>
+  <p class="aviso-busqueda" *ngIf="busqueda().trim()">
+    Se abrieron los niveles que coinciden con tu búsqueda.
+  </p>
+  <p class="estado" *ngIf="cargando()" role="status">Cargando jerarquía…</p>
+  <p *ngIf="error()" role="alert" class="mensaje error">{{ error() }}</p>
+
+  <div class="grupos">
+    <section class="grupo" *ngFor="let grupo of grupos(); let indice = index">
+      <p class="coordinador" *ngIf="grupo.nombre && grupo.nodos.length">
+        <span>Coordinación</span> {{ grupo.nombre }}
+      </p>
+      <ng-container
+        *ngTemplateOutlet="rama; context: { $implicit: grupo.nodos, ruta: 'grupo-' + indice }"
+      />
+    </section>
+  </div>
+  <div class="vacio" *ngIf="!cargando() && datos() && !hayResultados()">
+    <strong>{{
+      busqueda().trim() ? 'No encontramos coincidencias' : 'Aún no hay estructura registrada'
+    }}</strong>
+    <p>
+      {{
+        busqueda().trim()
+          ? 'Prueba con otro nombre de delegado, enlace o movilizador.'
+          : 'Los delegados y enlaces aparecerán aquí cuando se registren.'
+      }}
+    </p>
+  </div>
+
+  <details
+    class="recuperacion"
+    *ngIf="datos()?.rolSolicitante === 'coordinador' && datos()?.cuentasSinPerfil?.length"
+  >
+    <summary>
+      Cuentas pendientes de vincular <span>{{ datos()?.cuentasSinPerfil?.length }}</span>
+    </summary>
+    <p>Asigna un enlace a las cuentas que todavía no tienen perfil.</p>
+    <form *ngFor="let cuenta of datos()?.cuentasSinPerfil" (ngSubmit)="recuperar(cuenta.uid)">
+      <label
+        >Nombre del movilizador<input
+          name="nombre"
+          [(ngModel)]="formularios[cuenta.uid].nombre"
+          required
+      /></label>
+      <label
+        >Enlace responsable
+        <select name="enlace" [(ngModel)]="formularios[cuenta.uid].enlaceUid" required>
+          <option value="">Selecciona enlace</option>
+          <option *ngFor="let enlace of enlaces()" [value]="enlace.uid">{{ enlace.nombre }}</option>
+        </select>
+      </label>
+      <button type="submit" [disabled]="!!recuperando()">
+        {{
+          recuperando() === cuenta.uid ? 'Vinculando…' : 'Vincular ' + (cuenta.correo || cuenta.uid)
+        }}
+      </button>
+    </form>
+  </details>
+
+  <ng-template #rama let-nodos let-ruta="ruta">
+    <article
+      *ngFor="let nodo of nodos"
+      class="nodo"
+      [attr.data-rol]="nodo.usuario.rol"
+      [class.abierto]="abiertos().has(nodo.usuario.uid)"
+    >
+      <button
+        class="fila-nivel"
+        type="button"
+        (click)="alternar(nodo)"
+        [attr.aria-expanded]="abiertos().has(nodo.usuario.uid)"
+        [attr.aria-controls]="ruta + '-' + nodo.usuario.uid"
+      >
+        <span class="avatar" aria-hidden="true">{{ iniciales(nodo.usuario.nombre) }}</span>
+        <span class="identidad"
+          ><strong>{{ nodo.usuario.nombre }}</strong
+          ><span class="rol">{{ nodo.etiqueta }}</span></span
+        >
+        <span class="conteo">{{ descripcion(nodo) }}</span>
+        <svg
+          class="chevron"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m9 5 7 7-7 7" />
+        </svg>
+      </button>
+      <div
+        class="contenido-nivel"
+        [id]="ruta + '-' + nodo.usuario.uid"
+        *ngIf="abiertos().has(nodo.usuario.uid)"
+      >
+        <ng-container *ngIf="nodo.usuario.rol !== 'movilizador'; else simpatizantes">
+          <div class="hijos" *ngIf="nodo.hijos.length; else sinHijos">
+            <ng-container
+              *ngTemplateOutlet="
+                rama;
+                context: { $implicit: nodo.hijos, ruta: ruta + '-' + nodo.usuario.uid }
+              "
+            />
+          </div>
+          <ng-template #sinHijos
+            ><p class="estado vacio-nivel">
+              {{
+                nodo.usuario.rol === 'enlace'
+                  ? 'Este enlace todavía no tiene movilizadores.'
+                  : 'Este delegado todavía no tiene enlaces ni movilizadores.'
+              }}
+            </p></ng-template
+          >
+        </ng-container>
+        <ng-template #simpatizantes>
+          <section
+            class="simpatizantes"
+            *ngIf="listados()[nodo.usuario.uid] as listado"
+            [attr.aria-label]="'Simpatizantes de ' + nodo.usuario.nombre"
+          >
+            <p *ngIf="listado.cargando" class="estado" role="status">Cargando simpatizantes…</p>
+            <div class="error-listado" *ngIf="listado.error" role="alert">
+              <span>{{ listado.error }}</span
+              ><button type="button" (click)="cargarSimpatizantes(nodo.usuario.uid, true)">
+                Reintentar
+              </button>
+            </div>
+            <p class="estado vacio-nivel" *ngIf="listado.datos && !listado.datos.length">
+              Este movilizador todavía no tiene simpatizantes registrados.
+            </p>
+            <div class="lista-simpatizantes" *ngIf="listado.datos?.length">
+              <div class="lista-titulo">
+                <span>Simpatizantes registrados</span><strong>{{ listado.datos?.length }}</strong>
+              </div>
+              <button type="button" [disabled]="!!imprimiendo()" (click)="imprimirSimpatizantes(nodo.usuario)">{{ imprimiendo() === nodo.usuario.uid ? 'Preparando…' : 'Imprimir lista · 10 por hoja' }}</button>
+              <ul>
+                <li class="simpatizante" *ngFor="let persona of listado.datos">
+                  <span class="avatar avatar-persona" aria-hidden="true">{{
+                    iniciales(persona.nombreCompleto)
+                  }}</span>
+                  <div>
+                    <strong>{{ persona.nombreCompleto }}</strong
+                    ><span
+                      >{{ persona.colonia || 'Sin colonia o localidad'
+                      }}<ng-container *ngIf="persona.seccion">
+                        · Sección {{ persona.seccion }}</ng-container
+                      ></span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </ng-template>
+      </div>
+    </article>
+  </ng-template>
+</section>

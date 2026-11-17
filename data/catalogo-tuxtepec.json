@@ -1,0 +1,2766 @@
+{
+  "fuente": "tuxtepec_colonias_localidades_ordenadas_por_seccion.xlsx",
+  "colonias": [
+    {
+      "id": "san-juan-bautista-tuxtepec-el-reencuentro",
+      "tipo": "COLONIA",
+      "nombre": "EL REENCUENTRO",
+      "secciones": [
+        1011
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-victor-bravo-ahuja-ampliacion-primera-y-segunda-etapa",
+      "tipo": "COLONIA",
+      "nombre": "VÍCTOR BRAVO AHUJA AMPLIACIÓN PRIMERA Y SEGUNDA ETAPA",
+      "secciones": [
+        1011
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-fe",
+      "tipo": "COLONIA",
+      "nombre": "SANTA FE",
+      "secciones": [
+        1012,
+        1016,
+        1017
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-hidalgo",
+      "tipo": "COLONIA",
+      "nombre": "HIDALGO",
+      "secciones": [
+        1013
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-miguel-hidalgo",
+      "tipo": "COLONIA",
+      "nombre": "MIGUEL HIDALGO",
+      "secciones": [
+        1013,
+        1015
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ex-normal",
+      "tipo": "COLONIA",
+      "nombre": "EX NORMAL",
+      "secciones": [
+        1014,
+        1025
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-dos-de-abril",
+      "tipo": "COLONIA",
+      "nombre": "DOS DE ABRIL",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-progreso",
+      "tipo": "COLONIA",
+      "nombre": "EL PROGRESO",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-emiliano-zapata",
+      "tipo": "COLONIA",
+      "nombre": "EMILIANO ZAPATA",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-hacienda-real",
+      "tipo": "COLONIA",
+      "nombre": "HACIENDA REAL",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-union",
+      "tipo": "COLONIA",
+      "nombre": "LA UNIÓN",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-alamos",
+      "tipo": "COLONIA",
+      "nombre": "LOS ÁLAMOS",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-mundo-nuevo",
+      "tipo": "COLONIA",
+      "nombre": "MUNDO NUEVO",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ricardo-flores-magon",
+      "tipo": "COLONIA",
+      "nombre": "RICARDO FLORES MAGÓN",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-sergio-mendez-arceo",
+      "tipo": "COLONIA",
+      "nombre": "SERGIO MÉNDEZ ARCEO",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-tacoteno-el-tular",
+      "tipo": "LOCALIDAD",
+      "nombre": "TACOTENO EL TULAR",
+      "secciones": [
+        1018
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-cinco-de-mayo",
+      "tipo": "COLONIA",
+      "nombre": "CINCO DE MAYO",
+      "secciones": [
+        1019,
+        1036
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fraccionamiento-magisterial-de-la-cuenca",
+      "tipo": "COLONIA",
+      "nombre": "FRACCIONAMIENTO MAGISTERIAL DE LA CUENCA",
+      "secciones": [
+        1019
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-las-flores",
+      "tipo": "COLONIA",
+      "nombre": "LAS FLORES",
+      "secciones": [
+        1019
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-costa-verde",
+      "tipo": "COLONIA",
+      "nombre": "COSTA VERDE",
+      "secciones": [
+        1020
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fovissste-costa-verde",
+      "tipo": "COLONIA",
+      "nombre": "FOVISSSTE COSTA VERDE",
+      "secciones": [
+        1020
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fraccionamiento-costa-verde",
+      "tipo": "COLONIA",
+      "nombre": "FRACCIONAMIENTO COSTA VERDE",
+      "secciones": [
+        1020
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-jorge-l-tamayo-infonavit",
+      "tipo": "COLONIA",
+      "nombre": "JORGE L TAMAYO INFONAVIT",
+      "secciones": [
+        1020
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-angeles-primera-etapa",
+      "tipo": "COLONIA",
+      "nombre": "LOS ÁNGELES PRIMERA ETAPA",
+      "secciones": [
+        1020
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-angeles-segunda-etapa",
+      "tipo": "COLONIA",
+      "nombre": "LOS ÁNGELES SEGUNDA ETAPA",
+      "secciones": [
+        1020
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-maria-luisa",
+      "tipo": "COLONIA",
+      "nombre": "MARÍA LUISA",
+      "secciones": [
+        1021
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-lazaro-cardenas",
+      "tipo": "COLONIA",
+      "nombre": "LÁZARO CÁRDENAS",
+      "secciones": [
+        1022,
+        1023,
+        1024
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-clara",
+      "tipo": "COLONIA",
+      "nombre": "SANTA CLARA",
+      "secciones": [
+        1026,
+        1027
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-centro",
+      "tipo": "COLONIA",
+      "nombre": "CENTRO",
+      "secciones": [
+        1028,
+        1029,
+        1030
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-piragua",
+      "tipo": "COLONIA",
+      "nombre": "LA PIRAGUA",
+      "secciones": [
+        1031,
+        1032,
+        1041
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-maria-eugenia",
+      "tipo": "COLONIA",
+      "nombre": "MARÍA EUGENIA",
+      "secciones": [
+        1033
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-eden",
+      "tipo": "COLONIA",
+      "nombre": "EL EDÉN",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-nanche",
+      "tipo": "COLONIA",
+      "nombre": "EL NANCHE",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-sureste-primera-etapa",
+      "tipo": "COLONIA",
+      "nombre": "EL SURESTE PRIMERA ETAPA",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-sureste-segunda-etapa",
+      "tipo": "COLONIA",
+      "nombre": "EL SURESTE SEGUNDA ETAPA",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fraccionamiento-loma-san-juan",
+      "tipo": "COLONIA",
+      "nombre": "FRACCIONAMIENTO LOMA SAN JUAN",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-guelatao",
+      "tipo": "COLONIA",
+      "nombre": "GUELATAO",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-laureles",
+      "tipo": "COLONIA",
+      "nombre": "LOS LAURELES",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-tules",
+      "tipo": "COLONIA",
+      "nombre": "LOS TULES",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-manantiales-del-escobillal",
+      "tipo": "COLONIA",
+      "nombre": "MANANTIALES DEL ESCOBILLAL",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-martha-luz",
+      "tipo": "COLONIA",
+      "nombre": "MARTHA LUZ",
+      "secciones": [
+        1034
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-grajales",
+      "tipo": "COLONIA",
+      "nombre": "GRAJALES",
+      "secciones": [
+        1035
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-oaxaca",
+      "tipo": "COLONIA",
+      "nombre": "OAXACA",
+      "secciones": [
+        1036
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ampliacion-el-pedregal",
+      "tipo": "COLONIA",
+      "nombre": "AMPLIACIÓN EL PEDREGAL",
+      "secciones": [
+        1037
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-bosque",
+      "tipo": "COLONIA",
+      "nombre": "EL BOSQUE",
+      "secciones": [
+        1037
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-pedregal",
+      "tipo": "COLONIA",
+      "nombre": "EL PEDREGAL",
+      "secciones": [
+        1037
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-rubi",
+      "tipo": "COLONIA",
+      "nombre": "EL RUBÍ",
+      "secciones": [
+        1037
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-lomas-del-pedregal",
+      "tipo": "COLONIA",
+      "nombre": "LOMAS DEL PEDREGAL",
+      "secciones": [
+        1037
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-rufino-tamayo",
+      "tipo": "COLONIA",
+      "nombre": "RUFINO TAMAYO",
+      "secciones": [
+        1037
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-bella-vista",
+      "tipo": "COLONIA",
+      "nombre": "BELLA VISTA",
+      "secciones": [
+        1038
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-jardines-del-arroyo",
+      "tipo": "COLONIA",
+      "nombre": "JARDINES DEL ARROYO",
+      "secciones": [
+        1038
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-rosalia",
+      "tipo": "COLONIA",
+      "nombre": "LA ROSALÍA",
+      "secciones": [
+        1038
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-castillo",
+      "tipo": "COLONIA",
+      "nombre": "EL CASTILLO",
+      "secciones": [
+        1039,
+        1040,
+        1043
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-nueva-antequera",
+      "tipo": "COLONIA",
+      "nombre": "NUEVA ANTEQUERA",
+      "secciones": [
+        1039
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-bartolo",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN BARTOLO",
+      "secciones": [
+        1044,
+        1045
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-papaloapan",
+      "tipo": "LOCALIDAD",
+      "nombre": "PAPALOAPAN",
+      "secciones": [
+        1046,
+        1047,
+        1060
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-papaloapan-fraccionamiento",
+      "tipo": "COLONIA",
+      "nombre": "PAPALOAPAN FRACCIONAMIENTO",
+      "secciones": [
+        1046,
+        1047,
+        1060
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-camelia-roja",
+      "tipo": "LOCALIDAD",
+      "nombre": "CAMELIA ROJA",
+      "secciones": [
+        1048
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-esmalta",
+      "tipo": "LOCALIDAD",
+      "nombre": "LA ESMALTA",
+      "secciones": [
+        1048
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-piedra-quemada",
+      "tipo": "LOCALIDAD",
+      "nombre": "PIEDRA QUEMADA",
+      "secciones": [
+        1048
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-soledad-macin-chico",
+      "tipo": "LOCALIDAD",
+      "nombre": "SOLEDAD MACÍN CHICO",
+      "secciones": [
+        1048
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-benemerito-juarez-palo-gacho",
+      "tipo": "LOCALIDAD",
+      "nombre": "BENEMERITO JUAREZ PALO GACHO",
+      "secciones": [
+        1049,
+        1050,
+        1051
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-altamira",
+      "tipo": "LOCALIDAD",
+      "nombre": "ALTAMIRA",
+      "secciones": [
+        1051
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fuente-villa",
+      "tipo": "LOCALIDAD",
+      "nombre": "FUENTE VILLA",
+      "secciones": [
+        1051
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-las-delicias",
+      "tipo": "LOCALIDAD",
+      "nombre": "LAS DELICIAS",
+      "secciones": [
+        1051
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-adolfo-lopez-mateos-playa-de-mono",
+      "tipo": "COLONIA",
+      "nombre": "ADOLFO LÓPEZ MATEOS PLAYA DE MONO",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-del-carmen",
+      "tipo": "COLONIA",
+      "nombre": "DEL CARMEN",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-reacomodo-playa-de-mono",
+      "tipo": "COLONIA",
+      "nombre": "REACOMODO PLAYA DE MONO",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-antonio",
+      "tipo": "COLONIA",
+      "nombre": "SAN ANTONIO",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-antonio-el-encinal",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN ANTONIO EL ENCINAL",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-cruz",
+      "tipo": "COLONIA",
+      "nombre": "SANTA CRUZ",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-tuxtepec",
+      "tipo": "COLONIA",
+      "nombre": "TUXTEPEC",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-veintitres-de-noviembre",
+      "tipo": "COLONIA",
+      "nombre": "VEINTITRÉS DE NOVIEMBRE",
+      "secciones": [
+        1052
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fraccionamiento-las-palmas-del-ingenio",
+      "tipo": "COLONIA",
+      "nombre": "FRACCIONAMIENTO LAS PALMAS DEL INGENIO",
+      "secciones": [
+        1055
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-las-palmas-del-ingenio",
+      "tipo": "COLONIA",
+      "nombre": "LAS PALMAS DEL INGENIO",
+      "secciones": [
+        1055
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-moderna",
+      "tipo": "COLONIA",
+      "nombre": "MODERNA",
+      "secciones": [
+        1055
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-adolfo-lopez-mateos",
+      "tipo": "LOCALIDAD",
+      "nombre": "ADOLFO LÓPEZ MATEOS",
+      "secciones": [
+        1056
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-central-de-maquinaria",
+      "tipo": "COLONIA",
+      "nombre": "CENTRAL DE MAQUINARIA",
+      "secciones": [
+        1056
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-doce-de-julio",
+      "tipo": "COLONIA",
+      "nombre": "DOCE DE JULIO",
+      "secciones": [
+        1056
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-mirador-uno-y-dos-etapa",
+      "tipo": "COLONIA",
+      "nombre": "EL MIRADOR UNO Y DOS ETAPA",
+      "secciones": [
+        1056
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-soledad",
+      "tipo": "COLONIA",
+      "nombre": "LA SOLEDAD",
+      "secciones": [
+        1056
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-las-maravillas",
+      "tipo": "COLONIA",
+      "nombre": "LAS MARAVILLAS",
+      "secciones": [
+        1056
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-las-margaritas",
+      "tipo": "COLONIA",
+      "nombre": "LAS MARGARITAS",
+      "secciones": [
+        1056
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-amapa",
+      "tipo": "LOCALIDAD",
+      "nombre": "AMAPA",
+      "secciones": [
+        1057
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-paso-rincon",
+      "tipo": "LOCALIDAD",
+      "nombre": "PASO RINCÓN",
+      "secciones": [
+        1057
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-maria-amapa",
+      "tipo": "LOCALIDAD",
+      "nombre": "SANTA MARÍA AMAPA",
+      "secciones": [
+        1057
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-buena-vista-rio-tonto",
+      "tipo": "LOCALIDAD",
+      "nombre": "BUENA VISTA RÍO TONTO",
+      "secciones": [
+        1058
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-porvenir",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL PORVENIR",
+      "secciones": [
+        1058
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-cerritos-rio-tonto",
+      "tipo": "LOCALIDAD",
+      "nombre": "LOS CERRITOS RÍO TONTO",
+      "secciones": [
+        1058
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-isidro-zacate-colorado",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN ISIDRO ZACATE COLORADO",
+      "secciones": [
+        1058
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-teresa-papaloapan",
+      "tipo": "LOCALIDAD",
+      "nombre": "SANTA TERESA PAPALOAPAN",
+      "secciones": [
+        1059
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-pueblo-nuevo-papaloapan",
+      "tipo": "LOCALIDAD",
+      "nombre": "PUEBLO NUEVO PAPALOAPAN",
+      "secciones": [
+        1060
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ignacio-zaragoza",
+      "tipo": "LOCALIDAD",
+      "nombre": "IGNACIO ZARAGOZA",
+      "secciones": [
+        1061
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-isidro-las-pinas",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN ISIDRO LAS PIÑAS",
+      "secciones": [
+        1061
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-juan-bautista-de-matamoros",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN JUAN BAUTISTA DE MATAMOROS",
+      "secciones": [
+        1061
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-agua-fria-papaloapan",
+      "tipo": "LOCALIDAD",
+      "nombre": "AGUA FRÍA PAPALOAPAN",
+      "secciones": [
+        1062
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-nueva-revolucion",
+      "tipo": "COLONIA",
+      "nombre": "NUEVA REVOLUCIÓN",
+      "secciones": [
+        1062
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-rosa-papaloapan",
+      "tipo": "LOCALIDAD",
+      "nombre": "SANTA ROSA PAPALOAPAN",
+      "secciones": [
+        1062
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-francisco-i-madero-los-cerritos",
+      "tipo": "LOCALIDAD",
+      "nombre": "FRANCISCO I MADERO LOS CERRITOS",
+      "secciones": [
+        1063
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-reyes",
+      "tipo": "LOCALIDAD",
+      "nombre": "LOS REYES",
+      "secciones": [
+        1063
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-rancho-nuevo-jonotal",
+      "tipo": "LOCALIDAD",
+      "nombre": "RANCHO NUEVO JONOTAL",
+      "secciones": [
+        1063
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-buenos-aires-el-apompo",
+      "tipo": "LOCALIDAD",
+      "nombre": "BUENOS AIRES EL APOMPO",
+      "secciones": [
+        1064
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-camaron-salsipuedes",
+      "tipo": "LOCALIDAD",
+      "nombre": "CAMARÓN SALSIPUEDES",
+      "secciones": [
+        1064
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-francisco-salsipuedes",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN FRANCISCO SALSIPUEDES",
+      "secciones": [
+        1064
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-desengano",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL DESENGAÑO",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-jimbal",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL JIMBAL",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fraccionamiento-modelo",
+      "tipo": "COLONIA",
+      "nombre": "FRACCIONAMIENTO MODELO",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-francisco-i-madero",
+      "tipo": "COLONIA",
+      "nombre": "FRANCISCO I MADERO",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-aurora-hermosa-provincia",
+      "tipo": "COLONIA",
+      "nombre": "LA AURORA HERMOSA PROVINCIA",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-leonides-de-asis",
+      "tipo": "COLONIA",
+      "nombre": "LEÓNIDES DE ASÍS",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-palmilla",
+      "tipo": "LOCALIDAD",
+      "nombre": "PALMILLA",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-catarina",
+      "tipo": "LOCALIDAD",
+      "nombre": "SANTA CATARINA",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-silverio-la-arrocera",
+      "tipo": "COLONIA",
+      "nombre": "SILVERIO LA ARROCERA",
+      "secciones": [
+        1065
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-arroyo-zuzule",
+      "tipo": "LOCALIDAD",
+      "nombre": "ARROYO ZUZULE",
+      "secciones": [
+        1066
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-mangos",
+      "tipo": "LOCALIDAD",
+      "nombre": "LOS MANGOS",
+      "secciones": [
+        1066
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-miguel-obispo",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN MIGUEL OBISPO",
+      "secciones": [
+        1066
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-silverio-el-cedral",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN SILVERIO EL CEDRAL",
+      "secciones": [
+        1066
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-macin-chico",
+      "tipo": "LOCALIDAD",
+      "nombre": "MACÍN CHICO",
+      "secciones": [
+        1067
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-crucero-canaveral",
+      "tipo": "COLONIA",
+      "nombre": "CRUCERO CAÑAVERAL",
+      "secciones": [
+        1068
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-canaveral",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL CAÑAVERAL",
+      "secciones": [
+        1068
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-geso-residencial-playa-de-mono",
+      "tipo": "COLONIA",
+      "nombre": "GESO RESIDENCIAL PLAYA DE MONO",
+      "secciones": [
+        1068
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-pioquinto-becerra",
+      "tipo": "COLONIA",
+      "nombre": "PIOQUINTO BECERRA",
+      "secciones": [
+        1068
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-raul-ferrer",
+      "tipo": "COLONIA",
+      "nombre": "RAÚL FERRER",
+      "secciones": [
+        1068
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-sebastopol",
+      "tipo": "LOCALIDAD",
+      "nombre": "SEBASTOPOL",
+      "secciones": [
+        1068
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ampliacion-la-guadalupe",
+      "tipo": "COLONIA",
+      "nombre": "AMPLIACIÓN LA GUADALUPE",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-rosario",
+      "tipo": "COLONIA",
+      "nombre": "EL ROSARIO",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-ceiba",
+      "tipo": "COLONIA",
+      "nombre": "LA CEIBA",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-esperanza",
+      "tipo": "COLONIA",
+      "nombre": "LA ESPERANZA",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-esperanza-fraccionamiento",
+      "tipo": "COLONIA",
+      "nombre": "LA ESPERANZA FRACCIONAMIENTO",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-guadalupe",
+      "tipo": "COLONIA",
+      "nombre": "LA GUADALUPE",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-manguitos",
+      "tipo": "COLONIA",
+      "nombre": "LOS MANGUITOS",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-nueva-esperanza",
+      "tipo": "COLONIA",
+      "nombre": "NUEVA ESPERANZA",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-pablo",
+      "tipo": "COLONIA",
+      "nombre": "SAN PABLO",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ulises-ruiz-paz-y-progreso",
+      "tipo": "COLONIA",
+      "nombre": "ULISES RUIZ PAZ Y PROGRESO",
+      "secciones": [
+        1069
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-boca-de-coapa",
+      "tipo": "LOCALIDAD",
+      "nombre": "BOCA DE COAPA",
+      "secciones": [
+        1070
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-cedral",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL CEDRAL",
+      "secciones": [
+        1070
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ignacio-martinez-bautista",
+      "tipo": "LOCALIDAD",
+      "nombre": "IGNACIO MARTÍNEZ BAUTISTA",
+      "secciones": [
+        1070
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-maria-obispo",
+      "tipo": "LOCALIDAD",
+      "nombre": "SANTA MARÍA OBISPO",
+      "secciones": [
+        1070
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-arroyo-chiquito",
+      "tipo": "LOCALIDAD",
+      "nombre": "ARROYO CHIQUITO",
+      "secciones": [
+        1071
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-yagual",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL YAGUAL",
+      "secciones": [
+        1071
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-catarino-torres-pereda",
+      "tipo": "COLONIA",
+      "nombre": "CATARINO TORRES PEREDA",
+      "secciones": [
+        1072
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-estadio",
+      "tipo": "COLONIA",
+      "nombre": "EL ESTADIO",
+      "secciones": [
+        1072
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-pinos",
+      "tipo": "COLONIA",
+      "nombre": "LOS PINOS",
+      "secciones": [
+        1072
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-obrera-benito-juarez",
+      "tipo": "LOCALIDAD",
+      "nombre": "OBRERA BENITO JUÁREZ",
+      "secciones": [
+        1072
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-universidad",
+      "tipo": "COLONIA",
+      "nombre": "UNIVERSIDAD",
+      "secciones": [
+        1072
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-rafael",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN RAFAEL",
+      "secciones": [
+        1073
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-santa-ursula",
+      "tipo": "LOCALIDAD",
+      "nombre": "SANTA ÚRSULA",
+      "secciones": [
+        1073
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-paso-canoa",
+      "tipo": "LOCALIDAD",
+      "nombre": "PASO CANOA",
+      "secciones": [
+        1074
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-mina",
+      "tipo": "LOCALIDAD",
+      "nombre": "LA MINA",
+      "secciones": [
+        1075
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-buena-vista-gallardo",
+      "tipo": "LOCALIDAD",
+      "nombre": "BUENA VISTA GALLARDO",
+      "secciones": [
+        1076
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-esperanza-arroyo-la-gloria",
+      "tipo": "LOCALIDAD",
+      "nombre": "ESPERANZA ARROYO LA GLORIA",
+      "secciones": [
+        1076
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-fuente-misteriosa",
+      "tipo": "LOCALIDAD",
+      "nombre": "LA FUENTE MISTERIOSA",
+      "secciones": [
+        1076
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-union-localidad",
+      "tipo": "LOCALIDAD",
+      "nombre": "LA UNION",
+      "secciones": [
+        1076
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-camalotal",
+      "tipo": "LOCALIDAD",
+      "nombre": "CAMALOTAL",
+      "secciones": [
+        1077
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-rodeo-arroyo-pepesca",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL RODEO ARROYO PEPESCA",
+      "secciones": [
+        1078
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-reforma",
+      "tipo": "LOCALIDAD",
+      "nombre": "LA REFORMA",
+      "secciones": [
+        1078
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-bethania",
+      "tipo": "LOCALIDAD",
+      "nombre": "BETHANIA",
+      "secciones": [
+        1079
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-paraiso-zacatal",
+      "tipo": "LOCALIDAD",
+      "nombre": "EL PARAÍSO ZACATAL",
+      "secciones": [
+        1079
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-arroyo-limon",
+      "tipo": "LOCALIDAD",
+      "nombre": "ARROYO LIMÓN",
+      "secciones": [
+        1080
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-gloria",
+      "tipo": "LOCALIDAD",
+      "nombre": "LA GLORIA",
+      "secciones": [
+        1080
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-agua-fria-piedra-del-sol",
+      "tipo": "LOCALIDAD",
+      "nombre": "AGUA FRÍA PIEDRA DEL SOL",
+      "secciones": [
+        1081
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ojo-de-agua",
+      "tipo": "LOCALIDAD",
+      "nombre": "OJO DE AGUA",
+      "secciones": [
+        1081
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-pueblo-nuevo-ojo-de-agua",
+      "tipo": "LOCALIDAD",
+      "nombre": "PUEBLO NUEVO OJO DE AGUA",
+      "secciones": [
+        1081
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-felipe-de-la-pena",
+      "tipo": "LOCALIDAD",
+      "nombre": "SAN FELIPE DE LA PEÑA",
+      "secciones": [
+        1081
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ano-de-juarez",
+      "tipo": "LOCALIDAD",
+      "nombre": "AÑO DE JUÁREZ",
+      "secciones": [
+        1082
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-carlota",
+      "tipo": "LOCALIDAD",
+      "nombre": "LA CARLOTA",
+      "secciones": [
+        1082
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-lorena",
+      "tipo": "COLONIA",
+      "nombre": "LA LORENA",
+      "secciones": [
+        1083
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-mangos-nueva-era",
+      "tipo": "COLONIA",
+      "nombre": "LOS MANGOS NUEVA ERA",
+      "secciones": [
+        1083
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-nicolas-de-bari",
+      "tipo": "COLONIA",
+      "nombre": "SAN NICOLÁS DE BARI",
+      "secciones": [
+        1083
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-benito-juarez-inf-las-limas",
+      "tipo": "COLONIA",
+      "nombre": "BENITO JUÁREZ INF LAS LIMAS",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fraccionamiento-riveras-del-atoyac",
+      "tipo": "COLONIA",
+      "nombre": "FRACCIONAMIENTO RIVERAS DEL ATOYAC",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-fe",
+      "tipo": "COLONIA",
+      "nombre": "LA FE",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-lomas-altas",
+      "tipo": "COLONIA",
+      "nombre": "LOMAS ALTAS",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-manantiales",
+      "tipo": "COLONIA",
+      "nombre": "LOS MANANTIALES",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-riberas-del-atoyac",
+      "tipo": "COLONIA",
+      "nombre": "RIBERAS DEL ATOYAC",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-san-francisco-las-limas",
+      "tipo": "COLONIA",
+      "nombre": "SAN FRANCISCO LAS LIMAS",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-vista-hermosa",
+      "tipo": "COLONIA",
+      "nombre": "VISTA HERMOSA",
+      "secciones": [
+        2457
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-esfuerzo",
+      "tipo": "COLONIA",
+      "nombre": "EL ESFUERZO",
+      "secciones": [
+        2458
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-esfuerzo-primera-y-segunda-etapa",
+      "tipo": "COLONIA",
+      "nombre": "EL ESFUERZO PRIMERA Y SEGUNDA ETAPA",
+      "secciones": [
+        2458
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-lomita",
+      "tipo": "COLONIA",
+      "nombre": "LA LOMITA",
+      "secciones": [
+        2458
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-mata-de-cana",
+      "tipo": "LOCALIDAD",
+      "nombre": "MATA DE CAÑA",
+      "secciones": [
+        2458
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-los-mangales",
+      "tipo": "LOCALIDAD",
+      "nombre": "LOS MANGALES",
+      "secciones": [
+        2500
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ampliacion-el-trigal",
+      "tipo": "COLONIA",
+      "nombre": "AMPLIACIÓN EL TRIGAL",
+      "secciones": [
+        2523
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-cinco-de-febrero",
+      "tipo": "COLONIA",
+      "nombre": "CINCO DE FEBRERO",
+      "secciones": [
+        2523
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-diamante",
+      "tipo": "COLONIA",
+      "nombre": "EL DIAMANTE",
+      "secciones": [
+        2523
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-trigal",
+      "tipo": "COLONIA",
+      "nombre": "EL TRIGAL",
+      "secciones": [
+        2523
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-trigal-fraccionamiento",
+      "tipo": "COLONIA",
+      "nombre": "EL TRIGAL FRACCIONAMIENTO",
+      "secciones": [
+        2523
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-residencial-del-sur",
+      "tipo": "COLONIA",
+      "nombre": "RESIDENCIAL DEL SUR",
+      "secciones": [
+        2523
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-tuxtepec-dorado",
+      "tipo": "COLONIA",
+      "nombre": "TUXTEPEC DORADO",
+      "secciones": [
+        2523
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-santuario",
+      "tipo": "COLONIA",
+      "nombre": "EL SANTUARIO",
+      "secciones": [
+        2524
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-santuario-casas-geo",
+      "tipo": "COLONIA",
+      "nombre": "EL SANTUARIO CASAS GEO",
+      "secciones": [
+        2524
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-paraiso-fraccionamiento",
+      "tipo": "COLONIA",
+      "nombre": "EL PARAÍSO FRACCIONAMIENTO",
+      "secciones": [
+        2525
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-infonavit-el-paraiso",
+      "tipo": "COLONIA",
+      "nombre": "INFONAVIT EL PARAÍSO",
+      "secciones": [
+        2525
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-nuevo-paraiso",
+      "tipo": "COLONIA",
+      "nombre": "NUEVO PARAÍSO",
+      "secciones": [
+        2525
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-buena-vista",
+      "tipo": "COLONIA",
+      "nombre": "BUENA VISTA",
+      "secciones": [
+        2533
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-escobillal",
+      "tipo": "COLONIA",
+      "nombre": "EL ESCOBILLAL",
+      "secciones": [
+        2533
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-fovissste-las-palmas",
+      "tipo": "COLONIA",
+      "nombre": "FOVISSSTE LAS PALMAS",
+      "secciones": [
+        2533
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-nueva-florencia",
+      "tipo": "COLONIA",
+      "nombre": "LA NUEVA FLORENCIA",
+      "secciones": [
+        2533,
+        2534
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-las-arboledas",
+      "tipo": "COLONIA",
+      "nombre": "LAS ARBOLEDAS",
+      "secciones": [
+        2533
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-granada",
+      "tipo": "COLONIA",
+      "nombre": "GRANADA",
+      "secciones": [
+        2534
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-loma-alta",
+      "tipo": "LOCALIDAD",
+      "nombre": "LOMA ALTA",
+      "secciones": [
+        2534
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-cuauhtemoc",
+      "tipo": "COLONIA",
+      "nombre": "CUAUHTÉMOC",
+      "secciones": [
+        2535
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-fortaleza",
+      "tipo": "COLONIA",
+      "nombre": "LA FORTALEZA",
+      "secciones": [
+        2535
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-siglo-xxi",
+      "tipo": "COLONIA",
+      "nombre": "SIGLO XXI",
+      "secciones": [
+        2535
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-ampliacion-el-tropico",
+      "tipo": "COLONIA",
+      "nombre": "AMPLIACIÓN EL TRÓPICO",
+      "secciones": [
+        2558
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-el-tropico",
+      "tipo": "COLONIA",
+      "nombre": "EL TRÓPICO",
+      "secciones": [
+        2558
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-independencia",
+      "tipo": "COLONIA",
+      "nombre": "INDEPENDENCIA",
+      "secciones": [
+        2558
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-talleres",
+      "tipo": "COLONIA",
+      "nombre": "TALLERES",
+      "secciones": [
+        2558
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-diez-de-abril",
+      "tipo": "COLONIA",
+      "nombre": "DIEZ DE ABRIL",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-guadalupe-hinojosa-de-murat",
+      "tipo": "COLONIA",
+      "nombre": "GUADALUPE HINOJOSA DE MURAT",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-insurgentes",
+      "tipo": "COLONIA",
+      "nombre": "INSURGENTES",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-insurgentes-segunda-etapa",
+      "tipo": "COLONIA",
+      "nombre": "INSURGENTES SEGUNDA ETAPA",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-florida",
+      "tipo": "COLONIA",
+      "nombre": "LA FLORIDA",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-ortega",
+      "tipo": "COLONIA",
+      "nombre": "LA ORTEGA",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-la-victoria",
+      "tipo": "COLONIA",
+      "nombre": "LA VICTORIA",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-las-limas",
+      "tipo": "LOCALIDAD",
+      "nombre": "LAS LIMAS",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    },
+    {
+      "id": "san-juan-bautista-tuxtepec-linda-vista",
+      "tipo": "COLONIA",
+      "nombre": "LINDA VISTA",
+      "secciones": [
+        2559
+      ],
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true
+    }
+  ],
+  "secciones": [
+    {
+      "id": "1011",
+      "seccion": 1011,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL REENCUENTRO; Colonia: VÍCTOR BRAVO AHUJA AMPLIACIÓN PRIMERA Y SEGUNDA ETAPA"
+    },
+    {
+      "id": "1012",
+      "seccion": 1012,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: SANTA FE"
+    },
+    {
+      "id": "1013",
+      "seccion": 1013,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: HIDALGO; Colonia: MIGUEL HIDALGO"
+    },
+    {
+      "id": "1014",
+      "seccion": 1014,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EX NORMAL"
+    },
+    {
+      "id": "1015",
+      "seccion": 1015,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: MIGUEL HIDALGO"
+    },
+    {
+      "id": "1016",
+      "seccion": 1016,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: SANTA FE"
+    },
+    {
+      "id": "1017",
+      "seccion": 1017,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: SANTA FE"
+    },
+    {
+      "id": "1018",
+      "seccion": 1018,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: DOS DE ABRIL; Colonia: EL PROGRESO; Colonia: EMILIANO ZAPATA; Colonia: HACIENDA REAL; Colonia: LA UNIÓN; Colonia: LOS ÁLAMOS; Colonia: MUNDO NUEVO; Colonia: RICARDO FLORES MAGÓN; Colonia: SERGIO MÉNDEZ ARCEO; Localidad: TACOTENO EL TULAR"
+    },
+    {
+      "id": "1019",
+      "seccion": 1019,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CINCO DE MAYO; Colonia: FRACCIONAMIENTO MAGISTERIAL DE LA CUENCA; Colonia: LAS FLORES"
+    },
+    {
+      "id": "1020",
+      "seccion": 1020,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: COSTA VERDE; Colonia: FOVISSSTE COSTA VERDE; Colonia: FRACCIONAMIENTO COSTA VERDE; Colonia: JORGE L TAMAYO INFONAVIT; Colonia: LOS ÁNGELES PRIMERA ETAPA; Colonia: LOS ÁNGELES SEGUNDA ETAPA"
+    },
+    {
+      "id": "1021",
+      "seccion": 1021,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: MARÍA LUISA"
+    },
+    {
+      "id": "1022",
+      "seccion": 1022,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LÁZARO CÁRDENAS"
+    },
+    {
+      "id": "1023",
+      "seccion": 1023,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LÁZARO CÁRDENAS"
+    },
+    {
+      "id": "1024",
+      "seccion": 1024,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LÁZARO CÁRDENAS"
+    },
+    {
+      "id": "1025",
+      "seccion": 1025,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EX NORMAL"
+    },
+    {
+      "id": "1026",
+      "seccion": 1026,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: SANTA CLARA"
+    },
+    {
+      "id": "1027",
+      "seccion": 1027,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: SANTA CLARA"
+    },
+    {
+      "id": "1028",
+      "seccion": 1028,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CENTRO"
+    },
+    {
+      "id": "1029",
+      "seccion": 1029,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CENTRO"
+    },
+    {
+      "id": "1030",
+      "seccion": 1030,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CENTRO"
+    },
+    {
+      "id": "1031",
+      "seccion": 1031,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LA PIRAGUA"
+    },
+    {
+      "id": "1032",
+      "seccion": 1032,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LA PIRAGUA"
+    },
+    {
+      "id": "1033",
+      "seccion": 1033,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: MARÍA EUGENIA"
+    },
+    {
+      "id": "1034",
+      "seccion": 1034,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL EDÉN; Colonia: EL NANCHE; Colonia: EL SURESTE PRIMERA ETAPA; Colonia: EL SURESTE SEGUNDA ETAPA; Colonia: FRACCIONAMIENTO LOMA SAN JUAN; Colonia: GUELATAO; Colonia: LOS LAURELES; Colonia: LOS TULES; Colonia: MANANTIALES DEL ESCOBILLAL; Colonia: MARTHA LUZ"
+    },
+    {
+      "id": "1035",
+      "seccion": 1035,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: GRAJALES"
+    },
+    {
+      "id": "1036",
+      "seccion": 1036,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CINCO DE MAYO; Colonia: OAXACA"
+    },
+    {
+      "id": "1037",
+      "seccion": 1037,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: AMPLIACIÓN EL PEDREGAL; Colonia: EL BOSQUE; Colonia: EL PEDREGAL; Colonia: EL RUBÍ; Colonia: LOMAS DEL PEDREGAL; Colonia: RUFINO TAMAYO"
+    },
+    {
+      "id": "1038",
+      "seccion": 1038,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: BELLA VISTA; Colonia: JARDINES DEL ARROYO; Colonia: LA ROSALÍA"
+    },
+    {
+      "id": "1039",
+      "seccion": 1039,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL CASTILLO; Colonia: NUEVA ANTEQUERA"
+    },
+    {
+      "id": "1040",
+      "seccion": 1040,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL CASTILLO"
+    },
+    {
+      "id": "1041",
+      "seccion": 1041,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LA PIRAGUA"
+    },
+    {
+      "id": "1043",
+      "seccion": 1043,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL CASTILLO"
+    },
+    {
+      "id": "1044",
+      "seccion": 1044,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: SAN BARTOLO"
+    },
+    {
+      "id": "1045",
+      "seccion": 1045,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: SAN BARTOLO"
+    },
+    {
+      "id": "1046",
+      "seccion": 1046,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: PAPALOAPAN; Colonia: PAPALOAPAN FRACCIONAMIENTO"
+    },
+    {
+      "id": "1047",
+      "seccion": 1047,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: PAPALOAPAN; Colonia: PAPALOAPAN FRACCIONAMIENTO"
+    },
+    {
+      "id": "1048",
+      "seccion": 1048,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: CAMELIA ROJA; Localidad: LA ESMALTA; Localidad: PIEDRA QUEMADA; Localidad: SOLEDAD MACÍN CHICO"
+    },
+    {
+      "id": "1049",
+      "seccion": 1049,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BENEMERITO JUAREZ PALO GACHO"
+    },
+    {
+      "id": "1050",
+      "seccion": 1050,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BENEMERITO JUAREZ PALO GACHO"
+    },
+    {
+      "id": "1051",
+      "seccion": 1051,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BENEMERITO JUAREZ PALO GACHO; Localidad: ALTAMIRA; Localidad: FUENTE VILLA; Localidad: LAS DELICIAS"
+    },
+    {
+      "id": "1052",
+      "seccion": 1052,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: ADOLFO LÓPEZ MATEOS PLAYA DE MONO; Colonia: DEL CARMEN; Colonia: REACOMODO PLAYA DE MONO; Colonia: SAN ANTONIO; Localidad: SAN ANTONIO EL ENCINAL; Colonia: SANTA CRUZ; Colonia: TUXTEPEC; Colonia: VEINTITRÉS DE NOVIEMBRE"
+    },
+    {
+      "id": "1055",
+      "seccion": 1055,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: FRACCIONAMIENTO LAS PALMAS DEL INGENIO; Colonia: LAS PALMAS DEL INGENIO; Colonia: MODERNA"
+    },
+    {
+      "id": "1056",
+      "seccion": 1056,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: ADOLFO LÓPEZ MATEOS; Colonia: CENTRAL DE MAQUINARIA; Colonia: DOCE DE JULIO; Colonia: EL MIRADOR UNO Y DOS ETAPA; Colonia: LA SOLEDAD; Colonia: LAS MARAVILLAS; Colonia: LAS MARGARITAS"
+    },
+    {
+      "id": "1057",
+      "seccion": 1057,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: AMAPA; Localidad: PASO RINCÓN; Localidad: SANTA MARÍA AMAPA"
+    },
+    {
+      "id": "1058",
+      "seccion": 1058,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BUENA VISTA RÍO TONTO; Localidad: EL PORVENIR; Localidad: LOS CERRITOS RÍO TONTO; Localidad: SAN ISIDRO ZACATE COLORADO"
+    },
+    {
+      "id": "1059",
+      "seccion": 1059,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: SANTA TERESA PAPALOAPAN"
+    },
+    {
+      "id": "1060",
+      "seccion": 1060,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: PAPALOAPAN; Colonia: PAPALOAPAN FRACCIONAMIENTO; Localidad: PUEBLO NUEVO PAPALOAPAN"
+    },
+    {
+      "id": "1061",
+      "seccion": 1061,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: IGNACIO ZARAGOZA; Localidad: SAN ISIDRO LAS PIÑAS; Localidad: SAN JUAN BAUTISTA DE MATAMOROS"
+    },
+    {
+      "id": "1062",
+      "seccion": 1062,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: AGUA FRÍA PAPALOAPAN; Colonia: NUEVA REVOLUCIÓN; Localidad: SANTA ROSA PAPALOAPAN"
+    },
+    {
+      "id": "1063",
+      "seccion": 1063,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: FRANCISCO I MADERO LOS CERRITOS; Localidad: LOS REYES; Localidad: RANCHO NUEVO JONOTAL"
+    },
+    {
+      "id": "1064",
+      "seccion": 1064,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BUENOS AIRES EL APOMPO; Localidad: CAMARÓN SALSIPUEDES; Localidad: SAN FRANCISCO SALSIPUEDES"
+    },
+    {
+      "id": "1065",
+      "seccion": 1065,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: EL DESENGAÑO; Localidad: EL JIMBAL; Colonia: FRACCIONAMIENTO MODELO; Colonia: FRANCISCO I MADERO; Colonia: LA AURORA HERMOSA PROVINCIA; Colonia: LEÓNIDES DE ASÍS; Localidad: PALMILLA; Localidad: SANTA CATARINA; Colonia: SILVERIO LA ARROCERA"
+    },
+    {
+      "id": "1066",
+      "seccion": 1066,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: ARROYO ZUZULE; Localidad: LOS MANGOS; Localidad: SAN MIGUEL OBISPO; Localidad: SAN SILVERIO EL CEDRAL"
+    },
+    {
+      "id": "1067",
+      "seccion": 1067,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: MACÍN CHICO"
+    },
+    {
+      "id": "1068",
+      "seccion": 1068,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CRUCERO CAÑAVERAL; Localidad: EL CAÑAVERAL; Colonia: GESO RESIDENCIAL PLAYA DE MONO; Colonia: PIOQUINTO BECERRA; Colonia: RAÚL FERRER; Localidad: SEBASTOPOL"
+    },
+    {
+      "id": "1069",
+      "seccion": 1069,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: AMPLIACIÓN LA GUADALUPE; Colonia: EL ROSARIO; Colonia: LA CEIBA; Colonia: LA ESPERANZA; Colonia: LA ESPERANZA FRACCIONAMIENTO; Colonia: LA GUADALUPE; Colonia: LOS MANGUITOS; Colonia: NUEVA ESPERANZA; Colonia: SAN PABLO; Colonia: ULISES RUIZ PAZ Y PROGRESO"
+    },
+    {
+      "id": "1070",
+      "seccion": 1070,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BOCA DE COAPA; Localidad: EL CEDRAL; Localidad: IGNACIO MARTÍNEZ BAUTISTA; Localidad: SANTA MARÍA OBISPO"
+    },
+    {
+      "id": "1071",
+      "seccion": 1071,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: ARROYO CHIQUITO; Localidad: EL YAGUAL"
+    },
+    {
+      "id": "1072",
+      "seccion": 1072,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CATARINO TORRES PEREDA; Colonia: EL ESTADIO; Colonia: LOS PINOS; Localidad: OBRERA BENITO JUÁREZ; Colonia: UNIVERSIDAD"
+    },
+    {
+      "id": "1073",
+      "seccion": 1073,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: SAN RAFAEL; Localidad: SANTA ÚRSULA"
+    },
+    {
+      "id": "1074",
+      "seccion": 1074,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: PASO CANOA"
+    },
+    {
+      "id": "1075",
+      "seccion": 1075,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: LA MINA"
+    },
+    {
+      "id": "1076",
+      "seccion": 1076,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BUENA VISTA GALLARDO; Localidad: ESPERANZA ARROYO LA GLORIA; Localidad: LA FUENTE MISTERIOSA; Localidad: LA UNION"
+    },
+    {
+      "id": "1077",
+      "seccion": 1077,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: CAMALOTAL"
+    },
+    {
+      "id": "1078",
+      "seccion": 1078,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: EL RODEO ARROYO PEPESCA; Localidad: LA REFORMA"
+    },
+    {
+      "id": "1079",
+      "seccion": 1079,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: BETHANIA; Localidad: EL PARAÍSO ZACATAL"
+    },
+    {
+      "id": "1080",
+      "seccion": 1080,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: ARROYO LIMÓN; Localidad: LA GLORIA"
+    },
+    {
+      "id": "1081",
+      "seccion": 1081,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: AGUA FRÍA PIEDRA DEL SOL; Localidad: OJO DE AGUA; Localidad: PUEBLO NUEVO OJO DE AGUA; Localidad: SAN FELIPE DE LA PEÑA"
+    },
+    {
+      "id": "1082",
+      "seccion": 1082,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: AÑO DE JUÁREZ; Localidad: LA CARLOTA"
+    },
+    {
+      "id": "1083",
+      "seccion": 1083,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LA LORENA; Colonia: LOS MANGOS NUEVA ERA; Colonia: SAN NICOLÁS DE BARI"
+    },
+    {
+      "id": "2457",
+      "seccion": 2457,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: BENITO JUÁREZ INF LAS LIMAS; Colonia: FRACCIONAMIENTO RIVERAS DEL ATOYAC; Colonia: LA FE; Colonia: LOMAS ALTAS; Colonia: LOS MANANTIALES; Colonia: RIBERAS DEL ATOYAC; Colonia: SAN FRANCISCO LAS LIMAS; Colonia: VISTA HERMOSA"
+    },
+    {
+      "id": "2458",
+      "seccion": 2458,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL ESFUERZO; Colonia: EL ESFUERZO PRIMERA Y SEGUNDA ETAPA; Colonia: LA LOMITA; Localidad: MATA DE CAÑA"
+    },
+    {
+      "id": "2500",
+      "seccion": 2500,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Localidad: LOS MANGALES"
+    },
+    {
+      "id": "2523",
+      "seccion": 2523,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: AMPLIACIÓN EL TRIGAL; Colonia: CINCO DE FEBRERO; Colonia: EL DIAMANTE; Colonia: EL TRIGAL; Colonia: EL TRIGAL FRACCIONAMIENTO; Colonia: RESIDENCIAL DEL SUR; Colonia: TUXTEPEC DORADO"
+    },
+    {
+      "id": "2524",
+      "seccion": 2524,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL SANTUARIO; Colonia: EL SANTUARIO CASAS GEO"
+    },
+    {
+      "id": "2525",
+      "seccion": 2525,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: EL PARAÍSO FRACCIONAMIENTO; Colonia: INFONAVIT EL PARAÍSO; Colonia: NUEVO PARAÍSO"
+    },
+    {
+      "id": "2533",
+      "seccion": 2533,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: BUENA VISTA; Colonia: EL ESCOBILLAL; Colonia: FOVISSSTE LAS PALMAS; Colonia: LA NUEVA FLORENCIA; Colonia: LAS ARBOLEDAS"
+    },
+    {
+      "id": "2534",
+      "seccion": 2534,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: LA NUEVA FLORENCIA; Colonia: GRANADA; Localidad: LOMA ALTA"
+    },
+    {
+      "id": "2535",
+      "seccion": 2535,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: CUAUHTÉMOC; Colonia: LA FORTALEZA; Colonia: SIGLO XXI"
+    },
+    {
+      "id": "2558",
+      "seccion": 2558,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: AMPLIACIÓN EL TRÓPICO; Colonia: EL TRÓPICO; Colonia: INDEPENDENCIA; Colonia: TALLERES"
+    },
+    {
+      "id": "2559",
+      "seccion": 2559,
+      "municipio": "San Juan Bautista Tuxtepec",
+      "activo": true,
+      "colonia": "Colonia: DIEZ DE ABRIL; Colonia: GUADALUPE HINOJOSA DE MURAT; Colonia: INSURGENTES; Colonia: INSURGENTES SEGUNDA ETAPA; Colonia: LA FLORIDA; Colonia: LA ORTEGA; Colonia: LA VICTORIA; Localidad: LAS LIMAS; Colonia: LINDA VISTA"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<section class="login-page">
+  <div class="login-card">
+    <h1>Promoción al Voto</h1>
+    <p>Acceso al sistema</p>
+
+    <div class="mensaje-error" *ngIf="mensajeError">
+      {{ mensajeError }}
+    </div>
+
+    <form (ngSubmit)="iniciarSesion()">
+      <label>Correo electrónico</label>
+      <input
+        type="email"
+        name="correo"
+        [(ngModel)]="correo"
+        placeholder="usuario@correo.com"
+      />
+
+      <label>Contraseña</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Contraseña"
+      />
+
+      <button type="submit" [disabled]="cargando">
+        {{ cargando ? 'Ingresando...' : 'Iniciar sesión' }}
+      </button>
+    </form>
+  </div>
+</section>

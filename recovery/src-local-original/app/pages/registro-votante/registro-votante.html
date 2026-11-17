@@ -1,0 +1,626 @@
+<section class="registro-page">
+  <header class="registro-header">
+    <div>
+      <span class="etiqueta">Captura</span>
+
+      <h1>Registro de votante</h1>
+
+      <p>
+        Captura la información del votante manualmente o usa la cámara para leer
+        el frente de la INE.
+      </p>
+    </div>
+  </header>
+
+  <div
+    class="estado-conexion"
+    [class.conectado]="estaEnLinea"
+    [class.sin-conexion]="!estaEnLinea"
+  >
+    <div class="estado-icono">
+      {{ estaEnLinea ? '●' : '!' }}
+    </div>
+
+    <div>
+      <strong>
+        {{ estaEnLinea ? 'Conectado a internet' : 'Sin conexión' }}
+      </strong>
+
+      <span>
+        {{
+          estaEnLinea
+            ? 'Los registros se guardarán directamente en Firebase.'
+            : 'Puedes tomar la foto de la INE y capturar solo teléfono y Facebook. Se procesará cuando vuelva internet.'
+        }}
+      </span>
+    </div>
+  </div>
+
+  <div class="pendientes-ine-card" *ngIf="registrosPendientesINE > 0">
+    <div>
+      <strong>INE pendientes por procesar</strong>
+
+      <span>
+        Tienes {{ registrosPendientesINE }} registro(s) guardado(s) en este
+        teléfono.
+      </span>
+
+      <span class="texto-error-pendientes" *ngIf="pendientesConErrorINE > 0">
+        {{ pendientesConErrorINE }} registro(s) tienen error y necesitan
+        revisión.
+      </span>
+    </div>
+
+    <div class="acciones-pendientes">
+      <button
+        type="button"
+        class="btn-procesar-pendientes"
+        (click)="procesarPendientesINE()"
+        [disabled]="!estaEnLinea || procesandoPendientesINE"
+      >
+        {{
+          procesandoPendientesINE
+            ? 'Procesando...'
+            : estaEnLinea
+              ? 'Procesar pendientes'
+              : 'Esperando internet'
+        }}
+      </button>
+
+      <button
+        type="button"
+        class="btn-reintentar-pendientes"
+        (click)="reintentarPendientesConError()"
+        [disabled]="!estaEnLinea || procesandoPendientesINE"
+      >
+        Reintentar errores
+      </button>
+    </div>
+  </div>
+
+  <div class="avisos-pendientes-ine" *ngIf="avisosPendientesINE.length > 0">
+    <strong>No se pudieron procesar algunos registros:</strong>
+
+    <ul>
+      <li *ngFor="let aviso of avisosPendientesINE">
+        {{ aviso }}
+      </li>
+    </ul>
+
+    <small>
+      Puede ser por registro repetido, porque no se detectó la sección, la
+      colonia, la clave de elector, el nombre, la dirección o la edad. Puedes
+      presionar “Reintentar errores”. Si vuelve a fallar, puedes corregirlo
+      manualmente.
+    </small>
+
+    <div class="pendientes-error-lista" *ngIf="pendientesINEConError.length > 0">
+      <div
+        class="pendiente-error-card"
+        *ngFor="let pendiente of pendientesINEConError"
+      >
+        <div>
+          <strong>{{ pendiente.telefono || 'Sin teléfono' }}</strong>
+
+          <span>
+            {{ pendiente.fechaLocal | date: 'short' }}
+          </span>
+
+          <small>
+            {{ pendiente.error || 'No se pudo procesar este registro.' }}
+          </small>
+        </div>
+
+        <div class="acciones-error-pendiente">
+          <button
+            type="button"
+            class="btn-corregir-pendiente"
+            (click)="cargarPendienteINEParaCorregir(pendiente)"
+            [disabled]="!estaEnLinea || guardando"
+          >
+            Corregir manualmente
+          </button>
+
+          <button
+            type="button"
+            class="btn-eliminar-pendiente"
+            (click)="eliminarPendienteINE(pendiente)"
+            [disabled]="guardando"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mensaje exito" *ngIf="mensajeExito">
+    {{ mensajeExito }}
+  </div>
+
+  <div class="mensaje error" *ngIf="mensajeError">
+    {{ mensajeError }}
+  </div>
+
+  <div class="correccion-pendiente-card" *ngIf="pendienteINEEnCorreccionId">
+    <div>
+      <strong>Corrigiendo INE pendiente</strong>
+
+      <span>
+        Completa los datos manualmente. Al guardar, el votante se subirá a
+        Firebase y se eliminará el pendiente de este teléfono.
+      </span>
+    </div>
+
+    <button
+      type="button"
+      class="btn-cancelar-correccion"
+      (click)="cancelarCorreccionPendienteINE()"
+      [disabled]="guardando"
+    >
+      Cancelar corrección
+    </button>
+  </div>
+
+  <div
+    class="preview-ine-correccion-card"
+    *ngIf="pendienteINEEnCorreccionId && imagenPendienteCorreccionBase64"
+  >
+    <div class="preview-ine-info">
+      <strong>INE guardada del pendiente</strong>
+
+      <span>
+        Usa esta imagen para corregir manualmente nombre, clave, sección,
+        colonia, dirección y edad.
+      </span>
+    </div>
+
+    <div class="preview-ine-contenedor">
+      <img
+        [src]="imagenPendienteCorreccionBase64"
+        alt="INE pendiente para corrección"
+      />
+    </div>
+
+    <button
+      type="button"
+      class="btn-ver-ine-grande"
+      (click)="abrirImagenPendienteINE()"
+    >
+      Ver INE en grande
+    </button>
+  </div>
+
+  <div
+    class="modo-ine-pendiente"
+    *ngIf="!estaEnLinea && imagenInePendienteBase64"
+  >
+    <strong>Modo sin conexión activado</strong>
+
+    <p>
+      La foto de la INE ya quedó guardada temporalmente en este teléfono. Ahora
+      captura solo el teléfono y Facebook si tiene. Cuando vuelva internet, la
+      app leerá la INE y completará el registro.
+    </p>
+  </div>
+
+  <div class="ine-ocr-card">
+    <div>
+      <h3>
+        {{
+          estaEnLinea
+            ? 'Escanear frente de INE'
+            : 'Guardar foto de INE sin conexión'
+        }}
+      </h3>
+
+      <p>
+        {{
+          estaEnLinea
+            ? 'Toma una foto clara del frente de la credencial para rellenar nombre, dirección, clave de elector, sección, colonia y edad si se detectan.'
+            : 'Toma una foto clara del frente de la credencial. La imagen se guardará en este teléfono y se procesará cuando vuelva internet.'
+        }}
+      </p>
+    </div>
+
+    <input
+      type="file"
+      accept="image/*"
+      capture="environment"
+      hidden
+      #fotoIneFrente
+      (change)="procesarImagenINE($event)"
+    />
+
+    <button
+      type="button"
+      class="btn-camara"
+      (click)="fotoIneFrente.click()"
+      [disabled]="procesandoINE || guardando || !!pendienteINEEnCorreccionId"
+    >
+      {{
+        procesandoINE
+          ? 'Leyendo INE...'
+          : estaEnLinea
+            ? 'Abrir cámara'
+            : imagenInePendienteBase64
+              ? 'Cambiar foto de INE'
+              : 'Tomar foto de INE'
+      }}
+    </button>
+
+    <div class="ocr-progreso" *ngIf="procesandoINE">
+      <span>Procesando imagen {{ progresoOCR }}%</span>
+
+      <div class="ocr-barra">
+        <div [style.width.%]="progresoOCR"></div>
+      </div>
+    </div>
+
+    <small>
+      {{
+        pendienteINEEnCorreccionId
+          ? 'Actualmente estás corrigiendo un pendiente. Guarda o cancela la corrección para tomar otra INE.'
+          : estaEnLinea
+            ? 'Revisa los datos antes de guardar. La lectura puede variar según luz, enfoque o diseño de la INE.'
+            : 'La imagen queda guardada temporalmente en este dispositivo hasta que pueda procesarse.'
+      }}
+    </small>
+  </div>
+
+  <article class="registro-card">
+    <h2>
+      {{
+        pendienteINEEnCorreccionId
+          ? 'Corregir pendiente de INE'
+          : !estaEnLinea && imagenInePendienteBase64
+            ? 'Datos mínimos del votante'
+            : 'Datos del votante'
+      }}
+    </h2>
+
+    <p class="descripcion">
+      {{
+        pendienteINEEnCorreccionId
+          ? 'Completa o corrige los datos del pendiente. Cuando guardes, se subirá al sistema.'
+          : !estaEnLinea && imagenInePendienteBase64
+            ? 'Sin internet solo necesitas capturar teléfono y Facebook si tiene.'
+            : 'Verifica que la información sea correcta antes de guardar el registro.'
+      }}
+    </p>
+
+    <form class="registro-form" (ngSubmit)="registrarVotante()">
+      <div class="form-grid">
+        <ng-container *ngIf="estaEnLinea || !imagenInePendienteBase64">
+          <div class="form-group full">
+            <label>
+              Nombre completo
+              <span class="requerido">*</span>
+            </label>
+
+            <input
+              type="text"
+              name="nombreCompleto"
+              [(ngModel)]="formVotante.nombreCompleto"
+              placeholder="Nombre completo del votante"
+              autocomplete="off"
+            />
+          </div>
+        </ng-container>
+
+        <div class="form-group">
+          <label>
+            Teléfono
+            <span class="requerido">*</span>
+          </label>
+
+          <input
+            type="tel"
+            name="telefono"
+            [(ngModel)]="formVotante.telefono"
+            placeholder="Ej. 2871234567"
+            inputmode="numeric"
+            autocomplete="off"
+          />
+        </div>
+
+        <ng-container *ngIf="esCoordinador">
+          <div class="form-group">
+            <label>Seccional responsable</label>
+
+            <select
+              name="seccionalResponsableRegistro"
+              [ngModel]="formVotante.seccionalUid"
+              (ngModelChange)="alCambiarSeccionalRegistro($event)"
+            >
+              <option value="">Registro directo del coordinador</option>
+
+              <option
+                *ngFor="let seccional of seccionalesDisponibles$ | async"
+                [value]="seccional.uid"
+              >
+                {{ seccional.nombre }}
+              </option>
+            </select>
+
+            <small class="ayuda-campo">
+              Selecciona un seccional si quieres cargar este votante a uno de
+              sus movilizadores.
+            </small>
+          </div>
+
+          <div
+            class="form-group"
+            *ngIf="
+              movilizadoresDisponibles$ | async as movilizadoresDisponibles
+            "
+          >
+            <label>
+              Movilizador responsable
+              <span class="requerido" *ngIf="formVotante.seccionalUid">*</span>
+            </label>
+
+            <select
+              name="movilizadorResponsableCoordinador"
+              [(ngModel)]="formVotante.movilizadorUid"
+              [disabled]="!formVotante.seccionalUid"
+            >
+              <option value="">
+                {{
+                  formVotante.seccionalUid
+                    ? 'Selecciona movilizador'
+                    : 'Primero selecciona seccional'
+                }}
+              </option>
+
+              <option
+                *ngFor="
+                  let movilizador of filtrarMovilizadoresParaRegistro(
+                    movilizadoresDisponibles
+                  )
+                "
+                [value]="movilizador.uid"
+              >
+                {{ movilizador.nombre }}
+              </option>
+            </select>
+
+            <small class="ayuda-campo">
+              El listado se filtra automáticamente por el seccional elegido.
+            </small>
+          </div>
+        </ng-container>
+
+        <div
+          class="form-group full"
+          *ngIf="
+            esSeccional &&
+            (movilizadoresDisponibles$ | async) as movilizadoresDisponibles
+          "
+        >
+          <label>
+            Movilizador responsable
+            <span class="requerido">*</span>
+          </label>
+
+          <select
+            name="movilizadorResponsableSeccional"
+            [(ngModel)]="formVotante.movilizadorUid"
+          >
+            <option value="">Selecciona movilizador</option>
+
+            <option
+              *ngFor="
+                let movilizador of filtrarMovilizadoresParaRegistro(
+                  movilizadoresDisponibles
+                )
+              "
+              [value]="movilizador.uid"
+            >
+              {{ movilizador.nombre }}
+            </option>
+          </select>
+
+          <small class="ayuda-campo">
+            Como seccional, este campo es obligatorio. El votante quedará
+            cargado al movilizador seleccionado.
+          </small>
+        </div>
+
+        <div class="form-group full" *ngIf="esMovilizador">
+          <small class="ayuda-campo">
+            Este votante quedará cargado automáticamente a tu usuario
+            movilizador.
+          </small>
+        </div>
+
+        <ng-container *ngIf="estaEnLinea || !imagenInePendienteBase64">
+          <div class="form-group">
+            <label>
+              Edad
+              <span class="requerido">*</span>
+            </label>
+
+            <input
+              type="number"
+              name="edad"
+              [(ngModel)]="formVotante.edad"
+              placeholder="Ej. 35"
+              min="18"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>
+              Clave de elector
+              <span class="requerido">*</span>
+            </label>
+
+            <input
+              type="text"
+              name="claveElector"
+              [(ngModel)]="formVotante.claveElector"
+              placeholder="Clave de elector"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>
+              Sección
+              <span class="requerido">*</span>
+            </label>
+
+            <input
+              type="number"
+              name="seccion"
+              [ngModel]="formVotante.seccion"
+              (ngModelChange)="alCambiarSeccion($event)"
+              placeholder="Ej. 1057"
+              min="1"
+            />
+
+            <small class="ayuda-campo">
+              Si usas OCR, la sección se llenará automáticamente cuando sea
+              detectada.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label>
+              Municipio
+              <span class="requerido">*</span>
+            </label>
+
+            <input
+              type="text"
+              name="municipio"
+              [(ngModel)]="formVotante.municipio"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>
+              Colonia
+              <span class="requerido">*</span>
+            </label>
+
+            <select name="colonia" [(ngModel)]="formVotante.colonia">
+              <option value="">Selecciona colonia</option>
+
+              <option
+                *ngFor="let colonia of colonias$ | async"
+                [value]="colonia.nombre"
+              >
+                {{ colonia.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>
+              Dirección
+              <span class="requerido">*</span>
+            </label>
+
+            <textarea
+              name="direccion"
+              [(ngModel)]="formVotante.direccion"
+              placeholder="Dirección completa"
+            ></textarea>
+          </div>
+        </ng-container>
+
+        <div class="facebook-card">
+          <h3>Facebook</h3>
+
+          <div class="radio-group">
+            <label
+              class="radio-card"
+              [class.activo]="formVotante.tieneFacebook === true"
+            >
+              <input
+                type="radio"
+                name="tieneFacebook"
+                [(ngModel)]="formVotante.tieneFacebook"
+                [value]="true"
+              />
+
+              <span>Sí tiene Facebook</span>
+            </label>
+
+            <label
+              class="radio-card"
+              [class.activo]="formVotante.tieneFacebook === false"
+            >
+              <input
+                type="radio"
+                name="tieneFacebook"
+                [(ngModel)]="formVotante.tieneFacebook"
+                [value]="false"
+                (change)="formVotante.usuarioFacebook = ''"
+              />
+
+              <span>No tiene Facebook</span>
+            </label>
+          </div>
+
+          <div
+            class="form-group facebook-usuario"
+            *ngIf="formVotante.tieneFacebook"
+          >
+            <label>
+              Usuario de Facebook
+              <span class="requerido">*</span>
+            </label>
+
+            <input
+              type="text"
+              name="usuarioFacebook"
+              [(ngModel)]="formVotante.usuarioFacebook"
+              placeholder="Ej. juan.perez"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="alerta-offline" *ngIf="!estaEnLinea">
+        {{
+          imagenInePendienteBase64
+            ? esSeccional || (esCoordinador && formVotante.movilizadorUid)
+              ? 'Estás sin conexión. Al guardar, se almacenará la INE con teléfono, Facebook, seccional y movilizador seleccionado para procesarse después.'
+              : 'Estás sin conexión. Al guardar, se almacenará la INE con teléfono y Facebook para procesarse después.'
+            : 'Estás sin conexión. Primero toma la foto de la INE para poder guardar este registro pendiente.'
+        }}
+      </div>
+
+      <div class="acciones-form">
+        <button
+          type="button"
+          class="btn-limpiar"
+          (click)="limpiarFormulario()"
+          [disabled]="guardando || procesandoINE"
+        >
+          Limpiar
+        </button>
+
+        <button
+          type="submit"
+          class="btn-guardar"
+          [disabled]="guardando || procesandoINE"
+        >
+          {{
+            guardando
+              ? 'Guardando...'
+              : pendienteINEEnCorreccionId
+                ? 'Guardar corrección'
+                : !estaEnLinea && imagenInePendienteBase64
+                  ? 'Guardar pendiente'
+                  : 'Guardar votante'
+          }}
+        </button>
+      </div>
+    </form>
+  </article>
+</section>

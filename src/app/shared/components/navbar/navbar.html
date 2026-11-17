@@ -1,0 +1,97 @@
+<nav class="navbar">
+  <div class="navbar-top">
+    <div class="logo">Promoción al Voto</div>
+
+    <button
+      type="button"
+      class="btn-menu"
+      (click)="alternarMenu()"
+      [class.activo]="menuAbierto"
+      aria-label="Abrir menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="menu" [class.abierto]="menuAbierto">
+    <ng-container
+      *ngIf="rolUsuario === 'coordinador' || rolUsuario === 'seccional' || rolUsuario === 'enlace'"
+    >
+      <a
+        routerLink="/"
+        routerLinkActive="activo"
+        *ngIf="rolUsuario === 'coordinador'"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="cerrarMenu()"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/votantes"
+        routerLinkActive="activo"
+        *ngIf="rolUsuario === 'coordinador'"
+        (click)="cerrarMenu()"
+      >
+        Simpatizantes
+      </a>
+
+      <a
+        routerLink="/estructura"
+        routerLinkActive="activo"
+        *ngIf="
+          rolUsuario === 'coordinador' || rolUsuario === 'seccional' || rolUsuario === 'enlace'
+        "
+        (click)="cerrarMenu()"
+      >
+        Estructura
+      </a>
+      <a
+        routerLink="/control-electoral"
+        routerLinkActive="activo"
+        *ngIf="rolUsuario === 'coordinador'"
+        (click)="cerrarMenu()"
+      >
+        Control Electoral
+      </a>
+    </ng-container>
+
+    <a routerLink="/registro-votante" routerLinkActive="activo" (click)="cerrarMenu()">
+      Registrar simpatizante
+    </a>
+
+    <div class="usuario-navbar">
+      <div class="usuario-con-icono">
+        <span class="icono-user">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+              fill="currentColor"
+            />
+            <path
+              d="M4 21C4 17.134 7.58172 14 12 14C16.4183 14 20 17.134 20 21"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+
+        <div class="usuario-texto">
+          <strong>{{ nombreUsuario }}</strong>
+          <span>{{ nombreRol }}</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-salir" type="button" (click)="cerrarSesion()">Cerrar sesión</button>
+  </div>
+</nav>

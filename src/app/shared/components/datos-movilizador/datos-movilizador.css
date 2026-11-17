@@ -1,0 +1,5 @@
+.lectura { margin: 0 0 16px; padding: 12px; border-radius: 10px; background: #eff6ff; border: 1px solid #bfdbfe; }
+.lectura p { font-size: 13px; line-height: 1.5; margin: 0 0 10px; }
+.botones { display: flex; flex-wrap: wrap; gap: 8px; }
+button { border: 1px solid #cbd5e1; background: white; color: #172033; border-radius: 8px; padding: 10px; font: inherit; font-size: 13px; cursor: pointer; }
+button:disabled { opacity: .6; cursor: wait; }

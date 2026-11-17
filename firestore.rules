@@ -1,0 +1,76 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function estaAutenticado() {
+      return request.auth != null;
+    }
+
+    function usuarioActual() {
+      return get(/databases/$(database)/documents/usuarios/$(request.auth.uid));
+    }
+
+    function usuarioActivo() {
+      return estaAutenticado()
+        && exists(/databases/$(database)/documents/usuarios/$(request.auth.uid))
+        && usuarioActual().data.activo == true;
+    }
+
+    function tieneRol(rol) {
+      return usuarioActivo() && usuarioActual().data.rol == rol;
+    }
+
+    function esCoordinador() {
+      return tieneRol('coordinador');
+    }
+
+    function esCapturista() {
+      return usuarioActivo()
+        && (usuarioActual().data.rol == 'seccional'
+          || usuarioActual().data.rol == 'enlace'
+          || usuarioActual().data.rol == 'movilizador');
+    }
+
+    function seccionalPuedeCrearMovilizador() {
+      return tieneRol('seccional')
+        && request.resource.data.rol == 'movilizador'
+        && request.resource.data.activo == true
+        && request.resource.data.seccionalUid == request.auth.uid
+        && request.resource.data.coordinadorUid == '';
+    }
+
+    match /usuarios/{usuarioId} {
+      allow read: if esCoordinador()
+        || (usuarioActivo() && request.auth.uid == usuarioId);
+      allow create: if esCoordinador() || seccionalPuedeCrearMovilizador();
+      allow update, delete: if esCoordinador();
+    }
+
+    match /seccionesElectorales/{documento} {
+      allow read: if usuarioActivo();
+      allow create, update, delete: if esCoordinador();
+    }
+
+    match /colonias/{documento} {
+      allow read: if usuarioActivo();
+      allow create, update, delete: if esCoordinador();
+    }
+
+    match /votantes/{documento} {
+      allow read, update, delete: if esCoordinador();
+      allow create: if esCoordinador() || esCapturista();
+    }
+
+    match /controlElectoralSecciones/{documento} {
+      allow read, create, update, delete: if esCoordinador();
+    }
+
+    match /controlElectoralRg/{documento} {
+      allow read, create, update, delete: if esCoordinador();
+    }
+
+    match /controlElectoralRutasRg/{documento} {
+      allow read, create, update, delete: if esCoordinador();
+    }
+  }
+}

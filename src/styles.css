@@ -1,0 +1,158 @@
+:root {
+  --ui-fondo: #f4f6fa;
+  --ui-superficie: #fff;
+  --ui-texto: #172033;
+  --ui-suave: #64748b;
+  --ui-borde: #e2e8f0;
+  --ui-acento: #1d4ed8;
+  --ui-sombra: 0 4px 20px #17203306;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--ui-fondo); color: var(--ui-texto); font-family: 'Segoe UI', Arial, sans-serif; }
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #60a5fa; outline-offset: 3px; }
+button:disabled { cursor: not-allowed; }
+input, select, textarea { accent-color: var(--ui-acento); }
+::selection { background: #dbeafe; color: #172033; }
+
+/* Shared visual language across the existing screens. */
+:root app-root [class$='-page'] {
+  background: var(--ui-fondo);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--ui-texto);
+}
+:root app-root :is(.inicio-page, .estructura-page, .votantes-page, .registro-page, .control-electoral-page, .asignar-page) {
+  padding: clamp(18px, 3vw, 40px);
+  max-width: 1680px;
+  margin-inline: auto;
+}
+:root app-root :is(.inicio-header, .estructura-header, .votantes-header, .registro-header, .control-header, .asignar-page > .cabecera) {
+  background: linear-gradient(115deg, #142338, #243e5b);
+  border: 1px solid #ffffff14;
+  border-radius: 20px;
+  padding: clamp(24px, 3vw, 36px);
+  box-shadow: 0 8px 24px #14233812;
+}
+:root app-root :is(.inicio-header, .estructura-header, .votantes-header, .registro-header, .control-header, .asignar-page > .cabecera) h1 {
+  font-size: clamp(26px, 2.5vw, 36px);
+  line-height: 1.18;
+  letter-spacing: -.9px;
+}
+:root app-root :is(.inicio-header, .estructura-header, .votantes-header, .registro-header, .control-header, .asignar-page > .cabecera) p {
+  line-height: 1.65;
+  max-width: 760px;
+  color: #d5e0ee;
+}
+:root app-root :is(.form-card, .lista-card, .filtros-card, .grafica-card, .jerarquia-card, .panel, .login-card, .acordeon-card) {
+  border: 1px solid var(--ui-borde);
+  border-radius: 18px;
+  box-shadow: var(--ui-sombra);
+}
+:root app-root :is(.form-card, .lista-card, .filtros-card, .panel, .jerarquia-card) h2 {
+  letter-spacing: -.4px;
+  line-height: 1.35;
+}
+:root app-root :is(.item-card, .registro-card, .rg-card, .ruta-card) {
+  border-color: var(--ui-borde);
+  box-shadow: none;
+}
+:root app-root :is(.item-card, .rg-card):hover { border-color: #b9cce2; box-shadow: 0 4px 14px #17203307; }
+:root app-root .acordeon-header { background: #fff; }
+:root app-root .acordeon-header.activo { background: #f0f5fc; }
+:root app-root [class$='-page'] :is(.form-group, .filtro-grupo, .campo) :is(input, select, textarea) {
+  border-color: #cdd6e2;
+  border-radius: 10px;
+  transition: border-color .16s, box-shadow .16s;
+}
+:root app-root [class$='-page'] :is(.form-group, .filtro-grupo, .campo) :is(input, select, textarea):focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px #3b82f619;
+}
+:root app-root input::placeholder, :root app-root textarea::placeholder { color: #76859a; opacity: 1; }
+:root app-root :is(.ayuda-campo, .form-group small) { line-height: 1.6; }
+:root app-root :is(.btn, .btn-header, .btn-limpiar, .btn-mini) { border-radius: 10px; }
+:root app-root .btn.primario { background: var(--ui-acento); box-shadow: 0 3px 8px #1d4ed815; }
+:root app-root .btn.primario:hover { background: #1e40af; }
+:root app-root .btn.secundario { background: #edf2f8; color: #334155; }
+:root app-root .btn:disabled { box-shadow: none; transform: none; opacity: .6; }
+:root app-root .btn-mini { min-height: 34px; }
+:root app-root :is(.resumen-card, .indicadores article) { border: 1px solid var(--ui-borde); box-shadow: var(--ui-sombra); border-radius: 16px; }
+:root app-root .resumen-card:not(.principal) strong { color: #203c5d; }
+
+/* Notices use icons, a tinted surface and text, so color is never the only signal. */
+:root app-root :is(.mensaje, .mensaje-error, .alerta-offline, .avisos-pendientes-ine) {
+  --aviso-color: #1e40af;
+  --aviso-fondo: #eff6ff;
+  --aviso-borde: #bfdbfe;
+  position: relative;
+  padding: 17px 20px 17px 56px;
+  margin-block: 18px;
+  border: 1px solid var(--aviso-borde);
+  border-left: 4px solid var(--aviso-color);
+  border-radius: 12px;
+  background: var(--aviso-fondo);
+  color: var(--aviso-color);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  box-shadow: none;
+}
+:root app-root .mensaje.exito { --aviso-color: #166345; --aviso-fondo: #effaf5; --aviso-borde: #b9e5ce; }
+:root app-root :is(.mensaje.error, .mensaje-error) { --aviso-color: #a32929; --aviso-fondo: #fff3f2; --aviso-borde: #f4c9c5; }
+:root app-root :is(.alerta-offline, .avisos-pendientes-ine) { --aviso-color: #854d0e; --aviso-fondo: #fffbeb; --aviso-borde: #f2dda1; }
+:root app-root :is(.mensaje, .mensaje-error, .alerta-offline, .avisos-pendientes-ine)::before {
+  content: 'i';
+  position: absolute;
+  left: 17px;
+  top: 18px;
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+:root app-root .mensaje.exito::before { content: '✓'; }
+:root app-root :is(.mensaje.error, .mensaje-error, .alerta-offline, .avisos-pendientes-ine)::before { content: '!'; }
+:root app-root :is(.sin-datos, .sin-registros) {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 28px 22px;
+  color: #52647b;
+  line-height: 1.65;
+  text-align: center;
+}
+:root app-root .estado-carga { padding: 22px; color: #52647b; display: flex; align-items: center; justify-content: center; gap: 12px; }
+:root app-root .estado-carga::before { content: ''; width: 18px; height: 18px; border: 2px solid #dbeafe; border-top-color: #2563eb; border-radius: 50%; animation: ui-girar .8s linear infinite; }
+:root app-root .estado-conexion { border-radius: 14px; box-shadow: none; }
+:root app-root .estado-conexion span { line-height: 1.6; }
+:root app-root .filtros-listado { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+
+:root app-root .navbar { background: #142338; box-shadow: 0 1px 0 #ffffff10, 0 4px 16px #1423380d; font-family: 'Segoe UI', Arial, sans-serif; }
+:root app-root .navbar .menu a { border-radius: 9px; font-weight: 600; }
+:root app-root .navbar .menu a.activo { background: #edf4ff; color: #163d72; box-shadow: none; }
+:root app-root .login-page { background: radial-gradient(ellipse at 15% 15%, #dfeafa, transparent 55%), var(--ui-fondo); padding: 24px; }
+:root app-root .login-card { max-width: 440px; padding: 36px; border-radius: 22px; box-shadow: 0 20px 60px #1423380d; }
+:root app-root .login-card h1 { letter-spacing: -.8px; }
+:root app-root .login-card button { background: #1d4ed8; }
+
+@keyframes ui-girar { to { transform: rotate(360deg); } }
+@media (max-width: 700px) {
+  :root app-root .filtros-listado { grid-template-columns: 1fr; gap: 0; }
+  :root app-root :is(.inicio-page, .estructura-page, .votantes-page, .registro-page, .control-electoral-page, .asignar-page) { padding: 16px; }
+  :root app-root :is(.inicio-header, .estructura-header, .votantes-header, .registro-header, .control-header, .asignar-page > .cabecera) { border-radius: 16px; padding: 24px 20px; }
+  :root app-root :is(.form-group, .filtro-grupo, .campo) :is(input, select, textarea) { font-size: 16px; min-height: 44px; }
+  :root app-root :is(.btn, .btn-mini, .btn-header, .btn-limpiar) { min-height: 44px; }
+  :root app-root .login-card { padding: 28px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

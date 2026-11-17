@@ -1,0 +1,868 @@
+<section class="estructura-page">
+  <header class="estructura-header">
+    <div>
+      <span class="etiqueta">Administración</span>
+      <h1>Estructura y catálogos</h1>
+      <p>Administra secciones electorales, colonias y localidades, usuarios y monitoreo del sistema.</p>
+    </div>
+  </header>
+
+  <div class="mensaje exito" *ngIf="mensajeExito" role="status" aria-live="polite">
+    {{ mensajeExito }}
+  </div>
+
+  <div class="mensaje error" *ngIf="mensajeError" role="alert">
+    {{ mensajeError }}
+  </div>
+
+  <section class="acordeones-estructura">
+    <!-- SECCIONES -->
+
+    <article class="acordeon-card" *ngIf="puedeVerPanel('secciones')">
+      <button
+        type="button"
+        class="acordeon-header"
+        [class.activo]="estaPanelAbierto('secciones')"
+        (click)="alternarPanel('secciones')"
+      >
+        <div>
+          <strong>Secciones electorales</strong>
+          <span>Agregar, importar y administrar secciones.</span>
+        </div>
+
+        <span class="flecha" [class.abierta]="estaPanelAbierto('secciones')"> ▼ </span>
+      </button>
+
+      <div class="acordeon-contenido" *ngIf="estaPanelAbierto('secciones')">
+        <section class="contenido-grid">
+          <article class="form-card">
+            <h2>Agregar / editar sección</h2>
+            <p>La sección se guardará usando el número como ID del documento.</p>
+
+            <div class="importar-box">
+              <input
+                type="file"
+                accept=".xlsx,.xls,.csv"
+                hidden
+                #archivoSecciones
+                (change)="importarSeccionesDesdeArchivo($event)"
+              />
+
+              <button
+                type="button"
+                class="btn-importar"
+                (click)="archivoSecciones.click()"
+                [disabled]="importandoSecciones"
+              >
+                {{ importandoSecciones ? 'Importando...' : 'Importar secciones' }}
+              </button>
+
+              <small> Archivo con columnas: seccion, municipio, colonia, activo. </small>
+            </div>
+
+            <form (ngSubmit)="guardarSeccion()">
+              <div class="form-group">
+                <label>Sección electoral</label>
+                <input
+                  type="number"
+                  name="seccion"
+                  [(ngModel)]="formSeccion.seccion"
+                  placeholder="Ej. 1057"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Municipio</label>
+                <input type="text" name="municipioSeccion" [(ngModel)]="formSeccion.municipio" />
+              </div>
+
+              <div class="form-group">
+                <label>Colonias y localidades de la sección</label>
+                <input
+                  type="text"
+                  name="coloniaReferencia"
+                  [(ngModel)]="formSeccion.colonia"
+                  placeholder="Opcional"
+                />
+              </div>
+
+              <div class="acciones-form">
+                <button type="button" class="btn secundario" (click)="limpiarFormularioSeccion()">
+                  Limpiar
+                </button>
+
+                <button type="submit" class="btn primario">Guardar sección</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="lista-card">
+            <h2>Secciones registradas</h2>
+
+            <div class="lista-items" *ngIf="secciones$ | async as secciones">
+              <div class="sin-datos" *ngIf="secciones.length === 0">
+                No hay secciones registradas.
+              </div>
+
+              <div class="item-card" *ngFor="let seccion of secciones">
+                <div>
+                  <strong>Sección {{ seccion.seccion }}</strong>
+                  <span>{{ seccion.municipio }}</span>
+                  <small>
+                    {{ seccion.colonia || 'Sin colonias o localidades asociadas' }}
+                  </small>
+                </div>
+
+                <div class="acciones-item">
+                  <span class="badge" [class.inactivo]="!seccion.activo">
+                    {{ seccion.activo ? 'Activa' : 'Inactiva' }}
+                  </span>
+
+                  <button type="button" class="btn-mini editar" (click)="editarSeccion(seccion)">
+                    Editar
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn-mini estado desactivar"
+                    [disabled]="!!eliminandoSeccionId"
+                    (click)="eliminarSeccion(seccion)"
+                  >
+                    {{ eliminandoSeccionId === seccion.id ? 'Eliminando...' : 'Eliminar' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </article>
+
+    <!-- COLONIAS -->
+
+    <article class="acordeon-card" *ngIf="puedeVerPanel('colonias')">
+      <button
+        type="button"
+        class="acordeon-header"
+        [class.activo]="estaPanelAbierto('colonias')"
+        (click)="alternarPanel('colonias')"
+      >
+        <div>
+          <strong>Colonias y localidades</strong>
+          <span>Administra los asentamientos y sus secciones electorales.</span>
+        </div>
+
+        <span class="flecha" [class.abierta]="estaPanelAbierto('colonias')"> ▼ </span>
+      </button>
+
+      <div class="acordeon-contenido" *ngIf="estaPanelAbierto('colonias')">
+        <section class="contenido-grid">
+          <article class="form-card">
+            <h2>Agregar / editar colonia o localidad</h2>
+            <p>Estos asentamientos aparecerán en el registro de simpatizantes.</p>
+
+            <div class="importar-box">
+              <input
+                type="file"
+                accept=".xlsx,.xls,.csv"
+                hidden
+                #archivoColonias
+                (change)="importarColoniasDesdeArchivo($event)"
+              />
+
+              <button
+                type="button"
+                class="btn-importar"
+                (click)="archivoColonias.click()"
+                [disabled]="importandoColonias"
+              >
+                {{ importandoColonias ? 'Importando...' : 'Importar colonias' }}
+              </button>
+
+              <small> Archivo con columnas: nombre, municipio, activo. </small>
+            </div>
+
+            <form (ngSubmit)="guardarColonia()">
+              <div class="form-group">
+                <label>Tipo de asentamiento</label>
+                <select name="tipoAsentamiento" [(ngModel)]="formColonia.tipo">
+                  <option value="COLONIA">Colonia</option>
+                  <option value="LOCALIDAD">Localidad</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Secciones electorales</label>
+                <input type="text" name="seccionesColonia" [(ngModel)]="seccionesColoniaTexto" placeholder="Ej. 1012, 1016, 1017" />
+                <small>Separa con comas las secciones correspondientes.</small>
+              </div>
+              <div class="form-group">
+                <label>Nombre de colonia o localidad</label>
+                <input
+                  type="text"
+                  name="nombreColonia"
+                  [(ngModel)]="formColonia.nombre"
+                  placeholder="Ej. Centro"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Municipio</label>
+                <input type="text" name="municipioColonia" [(ngModel)]="formColonia.municipio" />
+              </div>
+
+              <div class="acciones-form">
+                <button type="button" class="btn secundario" (click)="limpiarFormularioColonia()">
+                  Limpiar
+                </button>
+
+                <button type="submit" class="btn primario">
+                  {{ editandoColoniaId ? 'Actualizar colonia' : 'Guardar colonia' }}
+                </button>
+              </div>
+            </form>
+          </article>
+
+          <article class="lista-card">
+            <h2>Colonias y localidades registradas</h2>
+
+            <div class="lista-items" *ngIf="colonias$ | async as colonias">
+              <div class="sin-datos" *ngIf="colonias.length === 0">
+                No hay colonias o localidades registradas.
+              </div>
+
+              <div class="item-card" *ngFor="let colonia of colonias">
+                <div>
+                  <strong>{{ colonia.nombre }}</strong>
+                  <small>{{ colonia.tipo === 'LOCALIDAD' ? 'Localidad' : 'Colonia' }} · Secciones: {{ colonia.secciones?.join(', ') || 'Sin asignar' }}</small>
+                  <span>{{ colonia.municipio }}</span>
+                </div>
+
+                <div class="acciones-item">
+                  <span class="badge" [class.inactivo]="!colonia.activo">
+                    {{ colonia.activo ? 'Activa' : 'Inactiva' }}
+                  </span>
+
+                  <button type="button" class="btn-mini editar" (click)="editarColonia(colonia)">
+                    Editar
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn-mini estado desactivar"
+                    [disabled]="!!eliminandoColoniaId"
+                    (click)="eliminarColonia(colonia)"
+                  >
+                    {{ eliminandoColoniaId === colonia.id ? 'Eliminando...' : 'Eliminar' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </article>
+
+    <!-- USUARIOS -->
+
+    <article class="acordeon-card" *ngIf="puedeVerPanel('usuarios')">
+      <button
+        type="button"
+        class="acordeon-header"
+        [class.activo]="estaPanelAbierto('usuarios')"
+        (click)="alternarPanel('usuarios')"
+      >
+        <div>
+          <strong>{{ esSeccional ? 'Enlaces' : 'Usuarios' }}</strong>
+          <span>{{ esSeccional ? 'Crea y consulta enlaces asignados a tu delegado.' : 'Administrar perfiles, roles y estructura.' }}</span>
+        </div>
+
+        <span class="flecha" [class.abierta]="estaPanelAbierto('usuarios')"> ▼ </span>
+      </button>
+
+      <div class="acordeon-contenido" *ngIf="estaPanelAbierto('usuarios')">
+        <section class="contenido-grid">
+          <article class="form-card">
+            <h2>{{ esSeccional ? 'Crear / editar enlace' : 'Agregar / editar perfil de usuario' }}</h2>
+            <p>La cuenta de acceso y su UID se crean automáticamente al guardar.</p>
+
+            <form (ngSubmit)="guardarUsuario()">
+              <div class="form-group" *ngIf="recuperandoUid">
+                <label>UID del usuario</label>
+                <input
+                  type="text"
+                  name="uidUsuario"
+                  [(ngModel)]="formUsuario.uid"
+                  [readonly]="!!editandoUsuarioId"
+                  placeholder="UID de Firebase Authentication"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Nombre</label>
+                <input
+                  type="text"
+                  name="nombreUsuario"
+                  [(ngModel)]="formUsuario.nombre"
+                  placeholder="Ej. Juan Pérez"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Correo</label>
+                <input
+                  type="email"
+                  name="correoUsuario"
+                  [(ngModel)]="formUsuario.correo"
+                  placeholder="usuario@correo.com"
+                />
+              </div>
+
+              <div class="form-group" *ngIf="!formUsuario.uid">
+                <label for="passwordUsuario">Contraseña del usuario</label>
+                <input
+                  type="password"
+                  id="passwordUsuario"
+                  name="passwordUsuario"
+                  [(ngModel)]="passwordUsuario"
+                  minlength="6"
+                  autocomplete="new-password"
+                  placeholder="Mínimo 6 caracteres"
+                  required
+                />
+              </div>
+              <div class="form-group" *ngIf="!esSeccional">
+                <label>Rol del usuario</label>
+
+                <div class="select-rol-wrapper">
+                  <select name="rolUsuario" [(ngModel)]="formUsuario.rol">
+                    <option value="coordinador">Coordinador - Acceso completo</option>
+                    <option value="seccional">Delegado - Solo registro</option>
+                    <option value="enlace">Enlace - Registro y estructura</option>
+                    <option value="movilizador">Movilizador - Solo registro</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" *ngIf="formUsuario.rol === 'seccional'">
+                <label>Coordinador responsable</label>
+
+                <select name="coordinadorResponsable" [(ngModel)]="formUsuario.coordinadorUid">
+                  <option value="">Selecciona coordinador</option>
+
+                  <option
+                    *ngFor="let coordinador of coordinadores$ | async"
+                    [value]="coordinador.uid"
+                  >
+                    {{ coordinador.nombre }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group" *ngIf="formUsuario.rol === 'enlace' && !esSeccional">
+                <label>Delegado responsable</label>
+
+                <select name="seccionalResponsable" [(ngModel)]="formUsuario.seccionalUid">
+                  <option value="">Selecciona delegado</option>
+
+                  <option *ngFor="let seccional of seccionales$ | async" [value]="seccional.uid">
+                    {{ seccional.nombre }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group" *ngIf="esSeccional"><label>Delegado responsable</label><input type="text" [value]="nombreUsuarioActual" readonly /><small>El enlace quedará asignado automáticamente a tu cuenta.</small></div>
+              <fieldset class="ficha-enlace" *ngIf="formUsuario.rol === 'enlace'">
+                <legend>Formato de registro del enlace</legend>
+                <p>El nombre del delegado, el nombre del enlace y el correo se toman del perfil. La firma se llena en papel.</p>
+                <div class="lectura-ine-enlace">
+                  <p>Toma una foto del frente de la INE para rellenar nombre, domicilio, colonia o localidad, código postal, clave de elector, CURP y sección cuando se detecten.</p>
+                  <input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden #camaraFrenteEnlace (change)="cargarIneEnlace($event, 'ineFrente')" />
+                  <input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden #camaraReversoEnlace (change)="cargarIneEnlace($event, 'ineReverso')" />
+                  <div class="acciones-form">
+                    <button type="button" class="btn secundario" [disabled]="guardandoUsuario || !!imagenesProcesando || leyendoIneEnlace" (click)="camaraFrenteEnlace.click()">Tomar foto del frente</button>
+                    <button type="button" class="btn secundario" [disabled]="guardandoUsuario || !!imagenesProcesando || leyendoIneEnlace" (click)="camaraReversoEnlace.click()">Tomar foto del reverso</button>
+                    <button type="button" class="btn primario" *ngIf="fichaEnlace.ineFrente" [disabled]="guardandoUsuario || !!imagenesProcesando || leyendoIneEnlace" (click)="rellenarEnlaceDesdeIne()">{{ leyendoIneEnlace ? 'Leyendo INE…' : 'Volver a leer INE' }}</button>
+                  </div>
+                  <p *ngIf="leyendoIneEnlace" role="status" aria-live="polite">Leyendo INE… Espera y revisa los datos antes de guardar.</p>
+                  <small>La foto del frente se lee automáticamente. También puedes cargar una imagen guardada abajo. Celular, correo y Facebook se capturan manualmente.</small>
+                </div>
+                <div class="form-group">
+                  <label for="domicilioEnlace">Domicilio</label>
+                  <input id="domicilioEnlace" name="domicilioEnlace" [(ngModel)]="fichaEnlace.domicilio" maxlength="250" required />
+                </div>
+                <div class="form-group">
+                  <label for="coloniaEnlace">Colonia o localidad</label>
+                  <input id="coloniaEnlace" name="coloniaEnlace" [(ngModel)]="fichaEnlace.colonia" list="coloniasEnlace" maxlength="150" required />
+                  <datalist id="coloniasEnlace"><option *ngFor="let colonia of colonias$ | async" [value]="colonia.nombre"></option></datalist>
+                </div>
+                <div class="ficha-pares">
+                  <div class="form-group"><label for="cpEnlace">C.P.</label><input id="cpEnlace" name="cpEnlace" [(ngModel)]="fichaEnlace.codigoPostal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required /></div>
+                  <div class="form-group"><label for="seccionEnlace">Sección electoral</label><input id="seccionEnlace" name="seccionEnlace" type="number" [(ngModel)]="fichaEnlace.seccion" min="1" step="1" required /></div>
+                  <div class="form-group"><label for="claveElectorEnlace">Clave de elector</label><input id="claveElectorEnlace" name="claveElectorEnlace" [(ngModel)]="fichaEnlace.claveElector" maxlength="18" required /></div>
+                  <div class="form-group"><label for="curpEnlace">CURP</label><input id="curpEnlace" name="curpEnlace" [(ngModel)]="fichaEnlace.curp" maxlength="18" required /></div>
+                  <div class="form-group"><label for="celularEnlace">Celular</label><input id="celularEnlace" name="celularEnlace" type="tel" [(ngModel)]="fichaEnlace.celular" inputmode="numeric" maxlength="10" required /></div>
+                  <div class="form-group"><label for="facebookEnlace">Facebook (opcional)</label><input id="facebookEnlace" name="facebookEnlace" [(ngModel)]="fichaEnlace.facebook" maxlength="150" /></div>
+                </div>
+                <div class="ficha-pares">
+                  <div class="form-group"><label for="ineFrenteEnlace">INE - Frente</label><input id="ineFrenteEnlace" name="ineFrenteEnlace" type="file" accept="image/jpeg,image/png,image/webp" [disabled]="guardandoUsuario || !!imagenesProcesando" (change)="cargarIneEnlace($event, 'ineFrente')" /><img class="ine-preview" *ngIf="fichaEnlace.ineFrente" [src]="fichaEnlace.ineFrente" alt="Frente de la INE del enlace" /><button type="button" class="btn secundario" *ngIf="fichaEnlace.ineFrente" [disabled]="guardandoUsuario || !!imagenesProcesando || leyendoIneEnlace" (click)="ajustarIneEnlace('ineFrente')">Ajustar foto del frente</button></div>
+                  <div class="form-group"><label for="ineReversoEnlace">INE - Reverso</label><input id="ineReversoEnlace" name="ineReversoEnlace" type="file" accept="image/jpeg,image/png,image/webp" [disabled]="guardandoUsuario || !!imagenesProcesando" (change)="cargarIneEnlace($event, 'ineReverso')" /><img class="ine-preview" *ngIf="fichaEnlace.ineReverso" [src]="fichaEnlace.ineReverso" alt="Reverso de la INE del enlace" /><button type="button" class="btn secundario" *ngIf="fichaEnlace.ineReverso" [disabled]="guardandoUsuario || !!imagenesProcesando || leyendoIneEnlace" (click)="ajustarIneEnlace('ineReverso')">Ajustar foto del reverso</button></div>
+                </div>
+                <small *ngIf="imagenesProcesando" role="status">Preparando imagen…</small>
+              </fieldset>
+
+              <div class="form-group" *ngIf="formUsuario.rol === 'movilizador'">
+                <label>Enlace responsable</label>
+                <select name="enlaceResponsable" [(ngModel)]="formUsuario.enlaceUid" (ngModelChange)="enlaceListadoUid = $event" required>
+                  <option value="">Selecciona enlace</option>
+                  <option *ngFor="let enlace of enlaces$ | async" [value]="enlace.uid">
+                    {{ enlace.nombre }} · {{ enlace.seccionalNombre }}
+                  </option>
+                </select>
+              </div>
+              <app-datos-movilizador *ngIf="formUsuario.rol === 'movilizador'" [ficha]="fichaEnlace" [colonias]="(colonias$ | async) || []" [bloqueado]="guardandoUsuario" (nombreDetectado)="formUsuario.nombre = $event" (procesandoChange)="leyendoIneMovilizador = $event" listaId="coloniasMovilizadorUsuario" />
+              <div class="acciones-form">
+                <button type="button" class="btn secundario" (click)="limpiarFormularioUsuario()">
+                  Limpiar
+                </button>
+
+                <button type="submit" class="btn primario" [disabled]="guardandoUsuario || !!imagenesProcesando || leyendoIneEnlace || leyendoIneMovilizador">
+                  {{ esSeccional ? (editandoUsuarioId ? 'Actualizar enlace' : 'Guardar enlace') : (editandoUsuarioId ? 'Actualizar usuario' : 'Guardar usuario') }}
+                </button>
+              </div>
+            </form>
+          </article>
+
+          <article class="lista-card">
+            <h2>{{ esSeccional ? 'Enlaces registrados' : 'Usuarios registrados' }}</h2>
+
+            <div class="lista-items" *ngIf="usuarios$ | async as usuarios">
+              <div class="sin-datos" *ngIf="usuarios.length === 0">
+                No hay usuarios registrados.
+              </div>
+
+              <div class="item-card" *ngFor="let usuario of usuarios">
+                <div>
+                  <strong>{{ usuario.nombre }}</strong>
+                  <span>{{ usuario.correo }}</span>
+                  <small>Rol: {{ nombresRol[usuario.rol] }}</small>
+                  <small *ngIf="usuario.enlaceNombre">Enlace: {{ usuario.enlaceNombre }}</small>
+
+                  <small *ngIf="usuario.coordinadorNombre">
+                    Coordinador: {{ usuario.coordinadorNombre }}
+                  </small>
+
+                  <small *ngIf="usuario.seccionalNombre">
+                    Delegado: {{ usuario.seccionalNombre }}
+                  </small>
+
+                  <small>UID: {{ usuario.uid }}</small>
+                </div>
+
+                <div class="acciones-item">
+                  <span class="badge" [class.inactivo]="!usuario.activo">
+                    {{ usuario.activo ? 'Activo' : 'Inactivo' }}
+                  </span>
+
+                  <button type="button" class="btn-mini editar" [disabled]="esSeccional && usuario.rol !== 'enlace'" (click)="editarUsuario(usuario)">
+                    Editar
+                  </button>
+
+                  <button type="button" class="btn-mini editar" *ngIf="usuario.rol === 'enlace'" (click)="imprimirBoletaEnlace(usuario)">
+                    Imprimir boleta
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn-mini estado desactivar"
+                    *ngIf="esCoordinador"
+                    [disabled]="guardandoUsuario || usuario.rol === 'coordinador'"
+                    (click)="eliminarUsuario(usuario)"
+                  >
+                    {{ usuario.rol === 'coordinador' ? 'Bloqueado' : 'Eliminar' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </article>
+
+    <article class="lista-card movilizadores-enlace" *ngIf="(esCoordinador || esEnlace) && (usuarios$ | async) as usuariosEnlace">
+      <h2>Movilizadores por enlace</h2>
+      <ng-container *ngIf="esCoordinador">
+        <p id="ayudaListado">Selecciona primero al delegado y despu?s uno de sus enlaces. Abre la lista y escribe para buscar. Usa las flechas y Enter para seleccionar.</p>
+        <div class="filtros-listado">
+          <div class="form-group">
+            <label id="etiquetaDelegadoListado">1. Delegado</label>
+            <app-selector-buscable aria-labelledby="etiquetaDelegadoListado" label="delegado" [opciones]="opcionesListado(usuariosEnlace, 'seccional')" [value]="delegadoDelListado(usuariosEnlace)" (valueChange)="cambiarDelegadoListado($event)" placeholder="Selecciona delegado" />
+          </div>
+          <div class="form-group">
+            <label id="etiquetaEnlaceListado">2. Enlace del delegado</label>
+            <app-selector-buscable aria-labelledby="etiquetaEnlaceListado" label="enlace" [opciones]="opcionesListado(usuariosEnlace, 'enlace')" [(value)]="enlaceListadoUid" [disabled]="!delegadoDelListado(usuariosEnlace)" [placeholder]="delegadoDelListado(usuariosEnlace) ? 'Selecciona enlace' : 'Selecciona primero un delegado'" />
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="esEnlace || enlaceListadoUid; else elegirEnlace">
+        <ng-container *ngIf="gruposMovilizadores(usuariosEnlace) as grupos">
+          <p>{{ grupos.length }} {{ grupos.length === 1 ? 'hoja' : 'hojas' }} de hasta 5 movilizadores. La última hoja conserva los espacios vacíos del formato.</p>
+          <button type="button" class="btn primario" [disabled]="!grupos.length" (click)="imprimirMovilizadores(usuariosEnlace)">Imprimir todos · 5 por hoja</button>
+          <p class="sin-datos" *ngIf="!grupos.length">Este enlace aún no tiene movilizadores asignados.</p>
+          <section class="grupo-movilizadores" *ngFor="let grupo of grupos; let i = index">
+            <div class="grupo-cabecera"><h3>Hoja {{ i + 1 }} · Movilizadores {{ i * 5 + 1 }}–{{ i * 5 + grupo.length }}</h3><button type="button" class="btn secundario" (click)="imprimirMovilizadores(usuariosEnlace, i)">Imprimir esta hoja</button></div>
+            <div class="item-card" *ngFor="let movilizador of grupo"><div><strong>{{ movilizador.nombre }}</strong><span>{{ movilizador.correo }}</span><small>{{ movilizador.fichaRegistro?.celular || 'Sin celular registrado' }} · Sección {{ movilizador.fichaRegistro?.seccion || 'sin capturar' }}</small><small *ngIf="!movilizador.activo">Inactivo</small></div><div class="acciones-item"><button type="button" class="btn-mini editar" [disabled]="!!imprimiendoSimpatizantesUid" (click)="imprimirSimpatizantes(movilizador)">{{ imprimiendoSimpatizantesUid === movilizador.uid ? 'Preparando…' : 'Imprimir simpatizantes · 10 por hoja' }}</button><button *ngIf="esCoordinador" type="button" class="btn-mini editar" (click)="editarUsuario(movilizador)">Editar datos</button></div></div>
+          </section>
+        </ng-container>
+      </ng-container>
+      <ng-template #elegirEnlace><p>Selecciona un delegado y un enlace para ver sus movilizadores e imprimir el formato.</p></ng-template>
+    </article>
+
+    <!-- MONITOREO -->
+
+    <article class="acordeon-card" *ngIf="puedeVerPanel('jerarquia')">
+      <button
+        type="button"
+        class="acordeon-header"
+        [class.activo]="estaPanelAbierto('jerarquia')"
+        (click)="alternarPanel('jerarquia')"
+      >
+        <div>
+          <strong>Monitoreo</strong>
+          <span>Rendimiento por delegados y movilizadores.</span>
+        </div>
+
+        <span class="flecha" [class.abierta]="estaPanelAbierto('jerarquia')"> ▼ </span>
+      </button>
+
+      <div class="acordeon-contenido" *ngIf="estaPanelAbierto('jerarquia')">
+        <app-jerarquia *ngIf="esCoordinador || esEnlace" />
+        <section class="jerarquia-section">
+          <article class="jerarquia-card">
+            <div class="jerarquia-header">
+              <div>
+                <h2>Monitoreo de estructura</h2>
+
+                <p *ngIf="esCoordinador">
+                  Revisa el rendimiento de delegados y movilizadores según los simpatizantes
+                  registrados.
+                </p>
+
+                <p *ngIf="esSeccional">
+                  Crea enlaces asignados a tu cuenta desde el panel Enlaces.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="contenido-grid admin-monitoreo"
+              *ngIf="usuarios$ | async as usuariosMonitoreo"
+            >
+              <article class="form-card" *ngIf="!esSeccional">
+                <header class="monitoreo-card-header">
+                  <span class="monitoreo-icono" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="9" cy="8" r="3" />
+                      <path d="M3 20v-2a6 6 0 0 1 12 0v2M19 8v6m-3-3h6" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h2>Nuevo movilizador</h2>
+                    <p>
+                      {{
+                        esEnlace
+                          ? 'Crea una cuenta vinculada a tu enlace.'
+                          : 'Crea su cuenta y asígnala a un enlace.'
+                      }}
+                    </p>
+                  </div>
+                </header>
+
+                <form (ngSubmit)="guardarMovilizadorDesdeMonitoreo()">
+                  <div class="form-group" *ngIf="recuperandoUid">
+                    <label>UID del movilizador</label>
+                    <input
+                      type="text"
+                      name="monitoreoMovilizadorUid"
+                      [(ngModel)]="formMovilizadorMonitoreo.uid"
+                      placeholder="UID de Firebase Authentication"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label>Nombre completo</label>
+                    <input
+                      type="text"
+                      name="monitoreoMovilizadorNombre"
+                      [(ngModel)]="formMovilizadorMonitoreo.nombre"
+                      placeholder="Ej. María López"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <input
+                      type="email"
+                      name="monitoreoMovilizadorCorreo"
+                      [(ngModel)]="formMovilizadorMonitoreo.correo"
+                      placeholder="movilizador@correo.com"
+                    />
+                  </div>
+
+                  <div class="form-group" *ngIf="!formMovilizadorMonitoreo.uid">
+                    <label for="passwordMovilizador">Contraseña</label>
+                    <input
+                      id="passwordMovilizador"
+                      type="password"
+                      name="passwordMovilizador"
+                      [(ngModel)]="passwordMovilizador"
+                      minlength="6"
+                      autocomplete="new-password"
+                      placeholder="Mínimo 6 caracteres"
+                      required
+                    />
+                  </div>
+                  <div class="form-group" *ngIf="esEnlace">
+                    <label>Enlace responsable</label>
+                    <input type="text" [value]="nombreUsuarioActual" readonly />
+                    <small>El movilizador quedará vinculado a tu cuenta de enlace.</small>
+                  </div>
+                  <div class="form-group" *ngIf="esCoordinador">
+                    <label>Enlace responsable</label>
+                    <select name="monitoreoMovilizadorEnlace" [(ngModel)]="formMovilizadorMonitoreo.enlaceUid" (ngModelChange)="enlaceListadoUid = $event">
+                      <option value="">Selecciona enlace</option>
+                      <ng-container *ngFor="let enlace of usuariosMonitoreo"><option *ngIf="enlace.rol === 'enlace' && enlace.activo" [value]="enlace.uid">{{ enlace.nombre }}</option></ng-container>
+                    </select>
+                  </div>
+
+                  <div class="form-group" *ngIf="esSeccional">
+                    <label>Delegado responsable</label>
+                    <input type="text" [value]="nombreUsuarioActual" readonly />
+                    <small>El movilizador quedará asignado a tu delegado.</small>
+                  </div>
+
+                  <app-datos-movilizador [ficha]="fichaMovilizadorMonitoreo" [colonias]="(colonias$ | async) || []" [bloqueado]="guardandoMovilizador" (nombreDetectado)="formMovilizadorMonitoreo.nombre = $event" (procesandoChange)="leyendoIneMovilizadorMonitoreo = $event" listaId="coloniasMovilizadorMonitoreo" />
+
+                  <div class="acciones-form">
+                    <button
+                      type="button"
+                      class="btn secundario"
+                      (click)="limpiarFormularioMovilizadorMonitoreo()"
+                    >
+                      Limpiar
+                    </button>
+
+                    <button type="submit" class="btn primario" [disabled]="guardandoMovilizador || leyendoIneMovilizadorMonitoreo">
+                      Guardar movilizador
+                    </button>
+                  </div>
+                </form>
+              </article>
+
+              <article class="form-card" *ngIf="esCoordinador">
+                <header class="monitoreo-card-header">
+                  <span class="monitoreo-icono" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h2>Reasignar movilizador</h2>
+                    <p>Cambia su delegado responsable.</p>
+                  </div>
+                </header>
+
+                <form (ngSubmit)="asignarMovilizadorASeccionalDesdeMonitoreo()">
+                  <div class="form-group">
+                    <label>Movilizador</label>
+                    <input
+                      type="text"
+                      name="buscarMovilizadorAsignacion"
+                      [(ngModel)]="busquedaMovilizadorAsignacionMonitoreo"
+                      placeholder="Buscar movilizador por nombre, correo, UID o delegado"
+                    />
+
+                    <select
+                      name="monitoreoMovilizadorExistente"
+                      [(ngModel)]="formAsignacionMovilizadorMonitoreo.movilizadorUid"
+                    >
+                      <option value="">Selecciona movilizador</option>
+
+                      <option
+                        *ngFor="
+                          let movilizador of obtenerMovilizadoresMonitoreoFiltrados(
+                            usuariosMonitoreo,
+                            busquedaMovilizadorAsignacionMonitoreo
+                          )
+                        "
+                        [value]="movilizador.uid"
+                      >
+                        {{ movilizador.nombre }}
+                        {{ movilizador.seccionalNombre ? '· ' + movilizador.seccionalNombre : '' }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Delegado responsable</label>
+                    <input
+                      type="text"
+                      name="buscarSeccionalAsignacion"
+                      [(ngModel)]="busquedaSeccionalAsignacionMonitoreo"
+                      placeholder="Buscar delegado por nombre, correo o UID"
+                    />
+
+                    <select
+                      name="monitoreoSeccionalAsignar"
+                      [(ngModel)]="formAsignacionMovilizadorMonitoreo.seccionalUid"
+                    >
+                      <option value="">Selecciona delegado</option>
+
+                      <option
+                        *ngFor="
+                          let seccional of obtenerSeccionalesMonitoreoFiltrados(
+                            usuariosMonitoreo,
+                            busquedaSeccionalAsignacionMonitoreo
+                          )
+                        "
+                        [value]="seccional.uid"
+                      >
+                        {{ seccional.nombre }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="acciones-form">
+                    <button
+                      type="button"
+                      class="btn secundario"
+                      (click)="limpiarFormularioAsignacionMovilizadorMonitoreo()"
+                    >
+                      Limpiar
+                    </button>
+
+                    <button type="submit" class="btn primario">Asignar movilizador</button>
+                  </div>
+                </form>
+              </article>
+
+              <article
+                class="form-card"
+                *ngIf="esCoordinador && (votantes$ | async) as votantesMonitoreo"
+              >
+                <header class="monitoreo-card-header">
+                  <span class="monitoreo-icono" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="m10 13 4-4m-6 7-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 1 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"
+                        transform="translate(1 0)"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <h2>Asignar simpatizante</h2>
+                    <p>Vincula un registro con su movilizador.</p>
+                  </div>
+                </header>
+
+                <form (ngSubmit)="asignarVotanteAMovilizadorDesdeMonitoreo()">
+                  <div class="form-group">
+                    <label>Simpatizante</label>
+                    <input
+                      type="text"
+                      name="buscarVotanteAsignacion"
+                      [(ngModel)]="busquedaVotanteAsignacionMonitoreo"
+                      placeholder="Buscar simpatizante por nombre, teléfono, clave, sección o colonia"
+                    />
+
+                    <select
+                      name="monitoreoVotanteAsignar"
+                      [(ngModel)]="formAsignacionVotanteMonitoreo.votanteId"
+                    >
+                      <option value="">Selecciona simpatizante</option>
+
+                      <option
+                        *ngFor="
+                          let votante of obtenerVotantesAsignablesMonitoreoFiltrados(
+                            votantesMonitoreo,
+                            busquedaVotanteAsignacionMonitoreo
+                          )
+                        "
+                        [value]="votante.id || votante.claveElector"
+                      >
+                        {{ votante.nombreCompleto }} · Sección {{ votante.seccion }} ·
+                        {{ $any(votante).movilizadorNombre || 'Sin movilizador' }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Movilizador responsable</label>
+                    <input
+                      type="text"
+                      name="buscarMovilizadorVotante"
+                      [(ngModel)]="busquedaMovilizadorVotanteMonitoreo"
+                      placeholder="Buscar movilizador por nombre, correo, UID o delegado"
+                    />
+
+                    <select
+                      name="monitoreoMovilizadorAsignar"
+                      [(ngModel)]="formAsignacionVotanteMonitoreo.movilizadorUid"
+                    >
+                      <option value="">Selecciona movilizador</option>
+
+                      <option
+                        *ngFor="
+                          let movilizador of obtenerMovilizadoresMonitoreoFiltrados(
+                            usuariosMonitoreo,
+                            busquedaMovilizadorVotanteMonitoreo
+                          )
+                        "
+                        [value]="movilizador.uid"
+                      >
+                        {{ movilizador.nombre }}
+                        {{ movilizador.seccionalNombre ? '· ' + movilizador.seccionalNombre : '' }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="acciones-form">
+                    <button
+                      type="button"
+                      class="btn secundario"
+                      (click)="limpiarFormularioAsignacionVotanteMonitoreo()"
+                    >
+                      Limpiar
+                    </button>
+
+                    <button type="submit" class="btn primario">Agregar simpatizante</button>
+                  </div>
+                </form>
+              </article>
+            </div>
+          </article>
+        </section>
+      </div>
+    </article>
+  </section>
+</section>
